@@ -2,79 +2,107 @@
 {
     public class Producto
     {
-        private string codigo_Producto;
-        private string nombre_Producto;
-        private string categoria_Producto;
-        private string estado_Producto; //PROBABLEMENTE SE ELIMINE...
-        private int cantida_Producto;
-        private double precio_Producto;
+        //Atributos
+        private string _codigoProducto;
+        private string _nombreProducto;
+        private string _categoriaProducto;
+        private bool _estadoProducto;
+        private int _cantidadProducto;
+        private double _precioProducto;
 
-        private string fecha_Registro;
-        private string fecha_Vencimiento;
-
+        //Constructor
+        public Producto(string codigoProducto, string nombreProducto, string categoriaProducto, bool estadoProducto, int cantidadProducto, double precioProducto)
+        {
+            CodigoProducto = codigoProducto;        
+            NombreProducto = nombreProducto;
+            CategoriaProducto = categoriaProducto;
+            EstadoProducto = estadoProducto;
+            CantidadProducto = cantidadProducto;
+            PrecioProducto = precioProducto;
+        }
         
-        public Producto(string Codigo_Producto, string Nombre_Producto, string Categoria_Producto, string Estado_Producto, int Cantida_Producto, double Precio_Producto, string Fecha_Registro, string Fecha_Vencimiento)
+        //Validaciones
+        public string CodigoProducto
         {
-            //Decidir si los parametros se inician con mayúscula...
-
-            this.codigo_Producto = Codigo_Producto;
-            this.nombre_Producto = Nombre_Producto;
-            this.categoria_Producto = Categoria_Producto;
-            this.estado_Producto = Estado_Producto;
-            this.cantida_Producto = Cantida_Producto;
-            this.precio_Producto = Precio_Producto;
-
-            this.fecha_Registro = Fecha_Registro;
+            get
+            {
+                return _codigoProducto;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Debe existir un número de código...");
+                }
+                _codigoProducto = value;
+            }
         }
 
-        public string Codigo_Producto
+        public string NombreProducto
         {
-            get { return this.codigo_Producto; }
-            set { codigo_Producto = value; }
+            get
+            {
+                return _nombreProducto;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "El nombre del producto no puede estar vacío.");
+                }
+                _nombreProducto = value;
+            }
         }
 
-        public string Nombre_Producto
+        public string CategoriaProducto
         {
-            get { return this.nombre_Producto; }
-            set { codigo_Producto = value; }
+            get 
+            { 
+                return _categoriaProducto;
+            }
+            set { _categoriaProducto = value;} 
         }
 
-        public string Categoria_Producto
+        public bool EstadoProducto
         {
-            get { return this.categoria_Producto; }
-            set { categoria_Producto = value; }
+            get 
+            { 
+                return _estadoProducto;
+            }
+            set { _estadoProducto = value; }
         }
 
-        public string Estado_Producto
+        public int CantidadProducto
         {
-            get { return this.estado_Producto; }
-            set { estado_Producto = value; }
+            get
+            {
+                return _cantidadProducto;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "La cantidad debe ser mayor que cero.");
+                }
+                _cantidadProducto = value;
+            }
         }
 
-        public int Cantida_Producto
+        public double PrecioProducto
         {
-            get { return this.cantida_Producto; }
-            set { cantida_Producto = value; }
+            get
+            {
+                return _precioProducto;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "El precio debe ser mayor que cero.");
+                }
+                _precioProducto = value;
+            }
         }
-
-        public double Precio_Producto
-        {
-            get { return this.precio_Producto; }
-            set { precio_Producto = value; }
-        }
-
-        public string Fecha_Registro
-        {
-            get { return this.fecha_Registro; }
-            set { fecha_Registro = value; }
-        }
-
-        public string Fecha_Vencimiento
-        {
-            get { return this.fecha_Vencimiento; }
-            set { fecha_Vencimiento = value; }
-        }
-
-
     }
-}
+
+}//Se agrego los getters y setters de los atributos 
