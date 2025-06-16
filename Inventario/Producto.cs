@@ -1,6 +1,8 @@
-﻿namespace Inventario
+﻿using Capa_Entidad;
+
+namespace Inventario
 {
-    public class Producto
+    public class Producto : IProducto
     {
         //Atributos
         private string _codigoProducto;
