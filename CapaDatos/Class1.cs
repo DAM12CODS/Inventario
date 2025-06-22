@@ -1,10 +1,10 @@
 // Importación de entidades y librerías necesarias
 using Capa_Entidad;
-using DocumentFormat.OpenXml.Drawing;     // NO se está usando realmente aquí
-using DocumentFormat.OpenXml.Math;        // Tampoco se usa
-using SpreadsheetLight;                   // Tampoco se usa en este código
-using System.Data;                        // Tampoco se usa aquí
-using System.Security.Principal;          // No se usa
+using DocumentFormat.OpenXml.Drawing;     
+using DocumentFormat.OpenXml.Math;        
+using SpreadsheetLight;                 
+using System.Data;                        
+using System.Security.Principal;          
 
 namespace CapaDatos
 {
@@ -13,10 +13,10 @@ namespace CapaDatos
         // Ruta donde se guardará el archivo de ventas
         private readonly string rutaArchivo = "ventas.txt";
 
-        /// <summary>
-        /// Guarda una lista de ventas en un archivo de texto.
-        /// Cada venta y sus detalles se escriben en líneas separadas con un formato específico.
-        /// </summary>
+       
+        // Guarda una lista de ventas en un archivo de texto.
+        // Cada venta y sus detalles se escriben en líneas separadas con un formato específico.
+        
         public void GuardarVentasEnTxt(List<Venta> ventas)
         {
             // StreamWriter permite escribir texto en un archivo (modo sobrescribir: false)
@@ -37,10 +37,10 @@ namespace CapaDatos
             }
         }
 
-        /// <summary>
-        /// Carga ventas desde un archivo de texto y las reconstruye en memoria.
-        /// Requiere una función externa que permita obtener el producto a partir de su código.
-        /// </summary>
+       
+       // Carga ventas desde un archivo de texto y las reconstruye en memoria.
+       // Requiere una función externa que permita obtener el producto a partir de su código.
+        
         public List<Venta> CargarVentasDesdeTxt(Func<string, IProducto> buscarProducto)
         {
             var ventas = new List<Venta>();    // Lista que se va a devolver
@@ -77,4 +77,6 @@ namespace CapaDatos
             return ventas; // Devolvemos la lista completa
         }
     }
+
 }
+

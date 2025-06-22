@@ -2,6 +2,7 @@
 
 namespace Inventario
 {
+  
     // Clase Producto que implementa la interfaz IProducto
     public class Producto : IProducto
     {
@@ -16,7 +17,9 @@ namespace Inventario
         // Constructor que inicializa todos los atributos del producto
         public Producto(string codigoProducto, string nombreProducto, string categoriaProducto, bool estadoProducto, int cantidadProducto, double precioProducto)
         {
+
             // Se asignan los valores mediante las propiedades (para aplicar validaciones)
+
             CodigoProducto = codigoProducto;
             NombreProducto = nombreProducto;
             CategoriaProducto = categoriaProducto;
@@ -25,7 +28,13 @@ namespace Inventario
             PrecioProducto = precioProducto;
         }
 
+
+
+
+        //Validaciones
+
         // Propiedad para el código del producto con validación
+ 
         public string CodigoProducto
         {
             get { return _codigoProducto; }
@@ -59,7 +68,18 @@ namespace Inventario
         public string CategoriaProducto
         {
             get { return _categoriaProducto; }
-            set { _categoriaProducto = value; }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "La categoría del producto no puede estar vacía.");
+                }
+                _categoriaProducto = value;
+            }
+
+      
+
         }
 
         // Propiedad para el estado del producto (activo o inactivo)
@@ -99,5 +119,8 @@ namespace Inventario
             }
         }
     }
+        
+}//Se agrego los getters y setters de los atributos 
 
-} // Fin del namespace Inventario
+
+
