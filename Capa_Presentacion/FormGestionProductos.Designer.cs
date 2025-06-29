@@ -59,10 +59,6 @@
             comboBox2 = new ComboBox();
             btnEliminar = new Button();
             dataGridView1 = new DataGridView();
-            Nombre = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -135,7 +131,7 @@
             // 
             // txtNombreProducto
             // 
-            txtNombreProducto.Location = new Point(103, 98);
+            txtNombreProducto.Location = new Point(105, 98);
             txtNombreProducto.Name = "txtNombreProducto";
             txtNombreProducto.Size = new Size(100, 23);
             txtNombreProducto.TabIndex = 4;
@@ -150,7 +146,7 @@
             // 
             // txtCategoria
             // 
-            txtCategoria.Location = new Point(106, 154);
+            txtCategoria.Location = new Point(105, 154);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(100, 23);
             txtCategoria.TabIndex = 6;
@@ -177,6 +173,7 @@
             btnRegistrar.TabIndex = 9;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // label7
             // 
@@ -262,7 +259,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(36, 454);
+            label13.Location = new Point(28, 454);
             label13.Name = "label13";
             label13.Size = new Size(46, 15);
             label13.TabIndex = 21;
@@ -276,6 +273,7 @@
             btnGuardarCambios.TabIndex = 22;
             btnGuardarCambios.Text = "Guardar Cambios";
             btnGuardarCambios.UseVisualStyleBackColor = true;
+            btnGuardarCambios.Click += btnGuardarCambios_Click;
             // 
             // label14
             // 
@@ -311,36 +309,16 @@
             btnEliminar.TabIndex = 26;
             btnEliminar.Text = "Eliminar Producto";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Cantidad, PrecioUnitario });
             dataGridView1.Location = new Point(439, 98);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(443, 447);
+            dataGridView1.Size = new Size(541, 447);
             dataGridView1.TabIndex = 27;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.Name = "Cantidad";
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.Name = "PrecioUnitario";
             // 
             // pictureBox1
             // 
@@ -367,7 +345,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(892, 598);
+            ClientSize = new Size(995, 598);
             Controls.Add(label9);
             Controls.Add(dataGridView1);
             Controls.Add(btnEliminar);
@@ -440,10 +418,6 @@
         private ComboBox comboBox2;
         private Button btnEliminar;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn PrecioUnitario;
         private PictureBox pictureBox1;
         private Label label9;
     }

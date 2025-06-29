@@ -1,5 +1,8 @@
-﻿using Inventario;
-
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using Inventario;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 namespace Datos
 {
     public class GestionProducto
@@ -9,6 +12,7 @@ namespace Datos
 
             try
             {
+                productos.Clear();
                 var verificar = new GestionDatos();
                 verificar.VerificarArchivo(archivo, entrada);
                 using (StreamReader archivoEntrada = new StreamReader(archivo))
@@ -20,21 +24,20 @@ namespace Datos
                     while ((linea = archivoEntrada.ReadLine()) != null)
                     {
                         string[] items = linea.Split(';'); //Leer hasta el delimitador
-                        if (items.Length >= 6)
+                        if (items.Length >= 5)
                         {
-                            bool disponible;
+                           // bool disponible;
                             int cantidad;
                             double precio;
-
                             // Intenta convertir los valores (maneja posibles errores de formato)
-                            bool.TryParse(items[3], out disponible);
-                            int.TryParse(items[4], out cantidad);
-                            double.TryParse(items[5], out precio);
+                         //   bool.TryParse(items[3], out disponible);
+                            int.TryParse(items[3], out cantidad);
+                            double.TryParse(items[4], out precio);
                             var producto = new Producto(
                                 items[0],
                                 items[1],
                                 items[2],
-                                disponible,
+                               // disponible,
                                 cantidad,
                                 precio
                                 );
@@ -50,7 +53,7 @@ namespace Datos
         }
 
         public void AgregarProducto(string archivo, string entrada, List<Producto> productos, string codigo,
-            string nombre, string categoria, bool estado, int cantidad, double precio)
+            string nombre, string categoria, int cantidad, double precio)
         {
             var verificar = new GestionDatos();
             verificar.VerificarArchivo(archivo, entrada);
@@ -59,10 +62,10 @@ namespace Datos
             {
                 using (StreamWriter datos = File.AppendText(archivo))
                 {
-                    Producto nuevoProducto = new Producto(codigo, nombre, categoria, estado, cantidad, precio);
+                    Producto nuevoProducto = new Producto(codigo, nombre, categoria, cantidad, precio);
                     productos.Add(nuevoProducto);
                     // Escribir en el archivo
-                    datos.WriteLine($"\n{codigo};{nombre};{categoria};{estado};{cantidad};{precio}");
+                    datos.WriteLine($"{codigo};{nombre};{categoria};{cantidad};{precio}");
                 }
             }
             catch (Exception ex)
@@ -72,29 +75,35 @@ namespace Datos
         }
 
         public void ActualizarProducto(string archivo, string entrada, List<Producto> productos, string codigo,
-            string nombre, string categoria, bool estado, int cantidad, double precio)
+            string nombre, string categoria, int cantidad, double precio)
         {
             CargarProductos(archivo, entrada, productos);
             string tempFile = Path.GetTempFileName();
             try
             {
-                Producto productoEncontrado = productos.FirstOrDefault(p => p.CodigoProducto == codigo);
+               // Producto productoEncontrado = productos.FirstOrDefault(p => p.CodigoProducto == codigo);
+                int i = productos.FindIndex(p => p.CodigoProducto.Equals(codigo, StringComparison.OrdinalIgnoreCase));
 
-                productoEncontrado.NombreProducto = nombre;
-                productoEncontrado.CategoriaProducto = categoria;
-                productoEncontrado.EstadoProducto = estado;
-                productoEncontrado.CantidadProducto = cantidad;
-                productoEncontrado.PrecioProducto = precio;
-
-                using (StreamWriter fstemp = new StreamWriter(tempFile))
+                if (i >= 0)
                 {
-                    // Escribir encabezado
-                    fstemp.WriteLine(entrada);
+                    productos[i].NombreProducto = nombre;
+                    productos[i].CategoriaProducto = categoria;
+                    productos[i].CantidadProducto = cantidad;
+                    productos[i].PrecioProducto = precio;
+                } else
+                {
+                    throw new Exception("Producto no encontrado");
+                }
 
-                    // Escribir todos los productos
-                    foreach (var producto in productos)
+                    using (StreamWriter fstemp = new StreamWriter(tempFile))
                     {
-                        fstemp.WriteLine($"{codigo};{nombre};{categoria};{estado};{cantidad};{precio}");
+                        // Escribir encabezado
+                        fstemp.WriteLine(entrada);
+
+                        // Escribir todos los productos
+                        foreach (var producto in productos)
+                        {
+                        fstemp.WriteLine($"{producto.CodigoProducto};{producto.NombreProducto};{producto.CategoriaProducto};{producto.CantidadProducto};{producto.PrecioProducto}");
                     }
                 }
                 // Reemplazar archivo original
@@ -109,7 +118,6 @@ namespace Datos
                     File.Delete(tempFile);
                 }
             }
-
         }
         public void EliminarProducto(string archivo, string entrada, List<Producto> productos, string codigo)
         {
@@ -131,7 +139,7 @@ namespace Datos
                     foreach (var producto in productos)
                     {
                         fstemp.WriteLine($"{producto.CodigoProducto};{producto.NombreProducto};{producto.CategoriaProducto};" +
-                                         $"{producto.EstadoProducto};{producto.CantidadProducto};{producto.PrecioProducto}");
+                                         $"{producto.CantidadProducto};{producto.PrecioProducto}");
                     }
                 }
 

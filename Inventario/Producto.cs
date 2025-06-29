@@ -10,12 +10,12 @@ namespace Inventario
         private string _codigoProducto;
         private string _nombreProducto;
         private string _categoriaProducto;
-        private bool _estadoProducto;
+        //private bool _estadoProducto;
         private int _cantidadProducto;
         private double _precioProducto;
 
         // Constructor que inicializa todos los atributos del producto
-        public Producto(string codigoProducto, string nombreProducto, string categoriaProducto, bool estadoProducto, int cantidadProducto, double precioProducto)
+        public Producto(string codigoProducto, string nombreProducto, string categoriaProducto, int cantidadProducto, double precioProducto)
         {
 
             // Se asignan los valores mediante las propiedades (para aplicar validaciones)
@@ -23,7 +23,7 @@ namespace Inventario
             CodigoProducto = codigoProducto;
             NombreProducto = nombreProducto;
             CategoriaProducto = categoriaProducto;
-            EstadoProducto = estadoProducto;
+            //EstadoProducto = estadoProducto;
             CantidadProducto = cantidadProducto;
             PrecioProducto = precioProducto;
         }
@@ -83,11 +83,12 @@ namespace Inventario
         }
 
         // Propiedad para el estado del producto (activo o inactivo)
-        public bool EstadoProducto
+       /* public bool EstadoProducto
         {
             get { return _estadoProducto; }
             set { _estadoProducto = value; }
         }
+       */
 
         // Propiedad para la cantidad del producto con validación
         public int CantidadProducto
