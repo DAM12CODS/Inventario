@@ -34,20 +34,6 @@ namespace Capa_Negocio
         // Busca una venta específica por su ID
         public Venta? BuscarVentaPorId(string id) => ventas.Find(v => v.IdVenta == id);
 
-        // UPDATE: Reemplaza una venta existente por una versión modificada
-        public bool ActualizarVenta(Venta ventaModificada)
-        {
-            if (ventaModificada == null)
-                throw new ArgumentNullException(nameof(ventaModificada));
-
-            var index = ventas.FindIndex(v => v.IdVenta == ventaModificada.IdVenta);
-            if (index == -1) return false;
-
-            ventas[index] = ventaModificada;
-            ventaDatos.GuardarVentasEnTxt(ventas); // Guarda la lista modificada
-            return true;
-        }
-
         // DELETE: Elimina una venta por ID y guarda los cambios
         public bool EliminarVenta(string id)
         {
