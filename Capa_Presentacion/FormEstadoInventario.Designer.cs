@@ -28,32 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEstadoInventario));
             btnVolver = new Button();
+            dataGridView1 = new DataGridView();
+            Nombre = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            pictureBox1 = new PictureBox();
+            label9 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(636, 36);
+            btnVolver.Location = new Point(684, 17);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 23);
+            btnVolver.Size = new Size(104, 35);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click_1;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Categoria, Cantidad, PrecioUnitario });
+            dataGridView1.Location = new Point(127, 86);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(543, 332);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            // 
+            // Categoria
+            // 
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.Name = "Cantidad";
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "PrecioUnitario";
+            PrecioUnitario.Name = "PrecioUnitario";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-1, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(800, 71);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Gray;
+            label9.Font = new Font("Britannic Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ButtonHighlight;
+            label9.Location = new Point(12, 23);
+            label9.Name = "label9";
+            label9.Size = new Size(199, 27);
+            label9.TabIndex = 30;
+            label9.Text = "Estado Inventario";
             // 
             // FormEstadoInventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label9);
+            Controls.Add(dataGridView1);
             Controls.Add(btnVolver);
+            Controls.Add(pictureBox1);
             Name = "FormEstadoInventario";
             Text = "FormEstadoInventario";
+            Load += FormEstadoInventario_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnVolver;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private PictureBox pictureBox1;
+        private Label label9;
     }
 }

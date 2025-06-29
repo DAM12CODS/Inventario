@@ -16,12 +16,17 @@ namespace Capa_Presentacion
         {
             InitializeComponent();
         }
-       
+
         private void Ingresar_Click(object sender, EventArgs e)
         {
             FormLogin login = new FormLogin(this); // Pasa el formulario actual como referencia
             login.Show();
             this.Hide(); // Oculta FormInicio
+        }
+
+        private void btnSalirPrograma_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

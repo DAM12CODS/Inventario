@@ -33,6 +33,11 @@ namespace Capa_Presentacion
         {
 
         }
+
+        private void txtNombreProducto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

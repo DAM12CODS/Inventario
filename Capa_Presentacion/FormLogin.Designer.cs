@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             btnSalir = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -35,6 +36,8 @@
             txtContraseña = new TextBox();
             btnVolver = new Button();
             btnIngresar = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnSalir
@@ -52,7 +55,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(180, 213);
+            label1.Location = new Point(183, 259);
             label1.Name = "label1";
             label1.Size = new Size(69, 17);
             label1.TabIndex = 1;
@@ -62,7 +65,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(180, 243);
+            label2.Location = new Point(183, 289);
             label2.Name = "label2";
             label2.Size = new Size(94, 17);
             label2.TabIndex = 2;
@@ -70,14 +73,14 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(250, 213);
+            txtNombre.Location = new Point(253, 259);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(249, 23);
             txtNombre.TabIndex = 3;
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(275, 243);
+            txtContraseña.Location = new Point(278, 289);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(224, 23);
             txtContraseña.TabIndex = 4;
@@ -96,7 +99,7 @@
             // btnIngresar
             // 
             btnIngresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIngresar.Location = new Point(315, 288);
+            btnIngresar.Location = new Point(318, 318);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(124, 46);
             btnIngresar.TabIndex = 6;
@@ -104,11 +107,21 @@
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnIngresar_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(132, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(512, 254);
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(748, 417);
+            Controls.Add(pictureBox1);
             Controls.Add(btnIngresar);
             Controls.Add(btnVolver);
             Controls.Add(txtContraseña);
@@ -118,6 +131,7 @@
             Controls.Add(btnSalir);
             Name = "FormLogin";
             Text = "FormLogin";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,5 +145,6 @@
         private TextBox txtContraseña;
         private Button btnVolver;
         private Button btnIngresar;
+        private PictureBox pictureBox1;
     }
 }

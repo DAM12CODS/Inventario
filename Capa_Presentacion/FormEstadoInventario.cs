@@ -25,5 +25,15 @@ namespace Capa_Presentacion
             this.Close(); // Cierra este formulario
             formAnterior.Show(); // Muestra el menú principal nuevamente
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FormEstadoInventario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

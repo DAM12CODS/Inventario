@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionProductos));
             btnVolver = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -62,12 +63,15 @@
             Codigo = new DataGridViewTextBoxColumn();
             Cantidad = new DataGridViewTextBoxColumn();
             PrecioUnitario = new DataGridViewTextBoxColumn();
+            pictureBox1 = new PictureBox();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(872, 12);
+            btnVolver.Location = new Point(794, 25);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(88, 30);
             btnVolver.TabIndex = 0;
@@ -78,7 +82,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 39);
+            label1.Location = new Point(43, 75);
             label1.Name = "label1";
             label1.Size = new Size(108, 15);
             label1.TabIndex = 1;
@@ -87,7 +91,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(44, 106);
+            label2.Location = new Point(40, 131);
             label2.Name = "label2";
             label2.Size = new Size(52, 15);
             label2.TabIndex = 2;
@@ -96,7 +100,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(44, 77);
+            label3.Location = new Point(40, 102);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 3;
@@ -105,7 +109,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(40, 132);
+            label4.Location = new Point(39, 157);
             label4.Name = "label4";
             label4.Size = new Size(64, 15);
             label4.TabIndex = 2;
@@ -114,7 +118,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(44, 161);
+            label5.Location = new Point(39, 186);
             label5.Name = "label5";
             label5.Size = new Size(61, 15);
             label5.TabIndex = 2;
@@ -123,7 +127,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(44, 188);
+            label6.Location = new Point(41, 213);
             label6.Name = "label6";
             label6.Size = new Size(46, 15);
             label6.TabIndex = 2;
@@ -131,42 +135,43 @@
             // 
             // txtNombreProducto
             // 
-            txtNombreProducto.Location = new Point(102, 73);
+            txtNombreProducto.Location = new Point(103, 98);
             txtNombreProducto.Name = "txtNombreProducto";
             txtNombreProducto.Size = new Size(100, 23);
             txtNombreProducto.TabIndex = 4;
+            txtNombreProducto.TextChanged += txtNombreProducto_TextChanged;
             // 
             // txtCodigo
             // 
-            txtCodigo.Location = new Point(103, 102);
+            txtCodigo.Location = new Point(105, 127);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(100, 23);
             txtCodigo.TabIndex = 5;
             // 
             // txtCategoria
             // 
-            txtCategoria.Location = new Point(106, 129);
+            txtCategoria.Location = new Point(106, 154);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(100, 23);
             txtCategoria.TabIndex = 6;
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(106, 158);
+            txtCantidad.Location = new Point(105, 183);
             txtCantidad.Name = "txtCantidad";
             txtCantidad.Size = new Size(100, 23);
             txtCantidad.TabIndex = 7;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(94, 187);
+            txtPrecio.Location = new Point(105, 212);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(100, 23);
             txtPrecio.TabIndex = 8;
             // 
             // btnRegistrar
             // 
-            btnRegistrar.Location = new Point(271, 115);
+            btnRegistrar.Location = new Point(259, 140);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(111, 49);
             btnRegistrar.TabIndex = 9;
@@ -176,7 +181,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(39, 236);
+            label7.Location = new Point(39, 282);
             label7.Name = "label7";
             label7.Size = new Size(95, 15);
             label7.TabIndex = 10;
@@ -185,7 +190,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(39, 264);
+            label8.Location = new Point(39, 310);
             label8.Name = "label8";
             label8.Size = new Size(122, 15);
             label8.TabIndex = 11;
@@ -194,35 +199,35 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(39, 282);
+            comboBox1.Location = new Point(39, 328);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 12;
             // 
             // txtNombreEditar
             // 
-            txtNombreEditar.Location = new Point(106, 318);
+            txtNombreEditar.Location = new Point(106, 364);
             txtNombreEditar.Name = "txtNombreEditar";
             txtNombreEditar.Size = new Size(100, 23);
             txtNombreEditar.TabIndex = 13;
             // 
             // txtCategoriaEditar
             // 
-            txtCategoriaEditar.Location = new Point(106, 347);
+            txtCategoriaEditar.Location = new Point(106, 393);
             txtCategoriaEditar.Name = "txtCategoriaEditar";
             txtCategoriaEditar.Size = new Size(100, 23);
             txtCategoriaEditar.TabIndex = 14;
             // 
             // txtCantidadEditar
             // 
-            txtCantidadEditar.Location = new Point(106, 376);
+            txtCantidadEditar.Location = new Point(106, 422);
             txtCantidadEditar.Name = "txtCantidadEditar";
             txtCantidadEditar.Size = new Size(100, 23);
             txtCantidadEditar.TabIndex = 15;
             // 
             // txtPrecioEditar
             // 
-            txtPrecioEditar.Location = new Point(106, 405);
+            txtPrecioEditar.Location = new Point(106, 451);
             txtPrecioEditar.Name = "txtPrecioEditar";
             txtPrecioEditar.Size = new Size(100, 23);
             txtPrecioEditar.TabIndex = 16;
@@ -230,7 +235,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(28, 321);
+            label10.Location = new Point(28, 367);
             label10.Name = "label10";
             label10.Size = new Size(54, 15);
             label10.TabIndex = 18;
@@ -239,7 +244,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(26, 347);
+            label11.Location = new Point(26, 393);
             label11.Name = "label11";
             label11.Size = new Size(64, 15);
             label11.TabIndex = 19;
@@ -248,7 +253,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(28, 379);
+            label12.Location = new Point(28, 425);
             label12.Name = "label12";
             label12.Size = new Size(61, 15);
             label12.TabIndex = 20;
@@ -257,7 +262,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(36, 408);
+            label13.Location = new Point(36, 454);
             label13.Name = "label13";
             label13.Size = new Size(46, 15);
             label13.TabIndex = 21;
@@ -265,7 +270,7 @@
             // 
             // btnGuardarCambios
             // 
-            btnGuardarCambios.Location = new Point(44, 455);
+            btnGuardarCambios.Location = new Point(44, 501);
             btnGuardarCambios.Name = "btnGuardarCambios";
             btnGuardarCambios.Size = new Size(138, 26);
             btnGuardarCambios.TabIndex = 22;
@@ -275,7 +280,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(322, 242);
+            label14.Location = new Point(282, 287);
             label14.Name = "label14";
             label14.Size = new Size(108, 15);
             label14.TabIndex = 23;
@@ -284,7 +289,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(327, 265);
+            label15.Location = new Point(287, 310);
             label15.Name = "label15";
             label15.Size = new Size(122, 15);
             label15.TabIndex = 24;
@@ -293,14 +298,14 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(328, 283);
+            comboBox2.Location = new Point(288, 328);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(121, 23);
             comboBox2.TabIndex = 25;
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(322, 400);
+            btnEliminar.Location = new Point(282, 445);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(124, 30);
             btnEliminar.TabIndex = 26;
@@ -311,9 +316,9 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Cantidad, PrecioUnitario });
-            dataGridView1.Location = new Point(486, 106);
+            dataGridView1.Location = new Point(439, 98);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(443, 382);
+            dataGridView1.Size = new Size(443, 447);
             dataGridView1.TabIndex = 27;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -337,11 +342,33 @@
             PrecioUnitario.HeaderText = "Precio Unitario";
             PrecioUnitario.Name = "PrecioUnitario";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1051, 73);
+            pictureBox1.TabIndex = 28;
+            pictureBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Gray;
+            label9.Font = new Font("Britannic Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ButtonHighlight;
+            label9.Location = new Point(13, 23);
+            label9.Name = "label9";
+            label9.Size = new Size(196, 27);
+            label9.TabIndex = 29;
+            label9.Text = "Gestion Producto";
+            // 
             // FormGestionProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(972, 568);
+            ClientSize = new Size(892, 598);
+            Controls.Add(label9);
             Controls.Add(dataGridView1);
             Controls.Add(btnEliminar);
             Controls.Add(comboBox2);
@@ -372,9 +399,11 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnVolver);
+            Controls.Add(pictureBox1);
             Name = "FormGestionProductos";
             Text = "FormGestionProductos";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -415,5 +444,7 @@
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn PrecioUnitario;
+        private PictureBox pictureBox1;
+        private Label label9;
     }
 }
