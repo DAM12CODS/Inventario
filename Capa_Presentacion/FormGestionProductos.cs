@@ -8,8 +8,9 @@ namespace Capa_Presentacion
         private FormMenuPrincipal formAnterior;
 
         private List<Producto> productos = new List<Producto>();
-        string productosCSV = "productos.csv";
-        string encabezado = "Codigo;Nombre;Categoria;Cantidad;Precio";
+        private string productosCSV = "productos.csv";
+        private string encabezado = "Codigo;Nombre;Categoria;Cantidad;Precio";
+        GestionProducto archivo = new GestionProducto();
 
 
         // Constructor que recibe el formulario anterior
@@ -21,7 +22,6 @@ namespace Capa_Presentacion
             gestor.CargarProductos(productosCSV, encabezado, productos);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = productos;
-
         }
 
         private void btnVolver_Click_1(object sender, EventArgs e)
@@ -42,13 +42,13 @@ namespace Capa_Presentacion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            var agregar = new GestionProducto();
+            //var agregar = new GestionProducto();
             string codigoP = txtCodigo.Text.Trim();
             string nombreP = txtNombreProducto.Text.Trim();
             string categoriaP = txtCategoria.Text.Trim();
             int cantidadP = int.Parse(txtCantidad.Text.Trim());
             double precioP = double.Parse(txtPrecio.Text.Trim());
-            agregar.AgregarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP,
+            archivo.AgregarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP,
                 precioP);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = productos;
@@ -56,13 +56,13 @@ namespace Capa_Presentacion
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
-            var editar = new GestionProducto();
+            //var editar = new GestionProducto();
             string codigoP = comboBox1.Text.Trim();
             string nombreP = txtNombreEditar.Text.Trim();
             string categoriaP = txtCategoriaEditar.Text.Trim();
             int cantidadP = int.Parse(txtCantidadEditar.Text.Trim());
             double precioP = double.Parse(txtPrecioEditar.Text.Trim());
-            editar.ActualizarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP,
+            archivo.ActualizarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP,
                 precioP);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = productos;
@@ -70,9 +70,9 @@ namespace Capa_Presentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            var eliminar = new GestionProducto();
+            //var eliminar = new GestionProducto();
             string codigoP = comboBox2.Text.Trim();
-            eliminar.EliminarProducto(productosCSV, encabezado, productos, codigoP);
+            archivo.EliminarProducto(productosCSV, encabezado, productos, codigoP);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = productos;
         }

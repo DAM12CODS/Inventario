@@ -1,4 +1,6 @@
-﻿namespace Datos
+﻿using System;
+using Inventario;
+namespace Datos
 {
     public class GestionDatos
     {
