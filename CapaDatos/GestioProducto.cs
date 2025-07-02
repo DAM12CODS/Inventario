@@ -65,10 +65,18 @@ namespace Datos
         }
         public void ActualizarProducto(string archivo, string entrada, List<Producto> productos, string codigo, string nombre, string categoria, int cantidad, double precio)
         {
-            CargarProductos(archivo, entrada, productos);
+            //CargarProductos(archivo, entrada, productos);
             string tempFile = Path.GetTempFileName();
             try
             {
+
+                Console.WriteLine("Cantidad de productos: " + productos.Count);
+                foreach (var p in productos)
+                {
+                    Console.WriteLine("Código en lista: [" + p.CodigoProducto + "]");
+                }
+                Console.WriteLine("Código buscado: [" + codigo + "]");
+
                 //Buscar en la lista de productos el codigo dado
                 int i = productos.FindIndex(p => p.CodigoProducto.Equals(codigo, StringComparison.OrdinalIgnoreCase));
                 //Actualiza los productos de la lista con el indice encontrado
@@ -78,6 +86,8 @@ namespace Datos
                     productos[i].CategoriaProducto = categoria;
                     productos[i].CantidadProducto = cantidad;
                     productos[i].PrecioProducto = precio;
+
+
                 }
                 else
                 {

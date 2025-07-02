@@ -33,18 +33,23 @@
             dataGridView1 = new DataGridView();
             pictureBox1 = new PictureBox();
             label9 = new Label();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(684, 17);
+            btnVolver.BackColor = Color.Red;
+            btnVolver.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.ForeColor = SystemColors.ControlLight;
+            btnVolver.Location = new Point(691, 17);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(104, 35);
+            btnVolver.Size = new Size(97, 33);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click_1;
             // 
             // dataGridView1
@@ -77,6 +82,15 @@
             label9.TabIndex = 30;
             label9.Text = "Estado Inventario";
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(228, 1);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(800, 71);
+            pictureBox2.TabIndex = 2;
+            pictureBox2.TabStop = false;
+            // 
             // FormEstadoInventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -85,12 +99,14 @@
             Controls.Add(label9);
             Controls.Add(dataGridView1);
             Controls.Add(btnVolver);
+            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Name = "FormEstadoInventario";
             Text = "FormEstadoInventario";
             Load += FormEstadoInventario_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,5 +122,6 @@
         private DataGridViewTextBoxColumn PrecioUnitario;
         private PictureBox pictureBox1;
         private Label label9;
+        private PictureBox pictureBox2;
     }
 }

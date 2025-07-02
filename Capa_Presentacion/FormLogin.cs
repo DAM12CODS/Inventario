@@ -25,6 +25,13 @@ namespace Capa_Presentacion
             string usuario = txtNombre.Text.Trim();
             string contraseña = txtContraseña.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contraseña))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             if (usuario == "admin" && contraseña == "1234")
             {
                 FormMenuPrincipal menu = new FormMenuPrincipal(this);
@@ -35,8 +42,11 @@ namespace Capa_Presentacion
             {
                 MessageBox.Show("Credenciales incorrectas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            txtNombre.Text = "";
+            txtContraseña.Text = "";
+            txtNombre.Focus();
 
-        }
+        } 
 
         private void btnVolver_Click(object sender, EventArgs e)
         {

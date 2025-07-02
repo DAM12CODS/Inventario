@@ -42,20 +42,22 @@
             // 
             // btnSalir
             // 
+            btnSalir.BackColor = Color.Red;
             btnSalir.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.ForeColor = SystemColors.ControlLight;
             btnSalir.Location = new Point(594, 369);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(142, 36);
             btnSalir.TabIndex = 0;
             btnSalir.Text = "Salir Programa";
-            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(183, 259);
+            label1.Location = new Point(206, 281);
             label1.Name = "label1";
             label1.Size = new Size(69, 17);
             label1.TabIndex = 1;
@@ -65,7 +67,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(183, 289);
+            label2.Location = new Point(206, 311);
             label2.Name = "label2";
             label2.Size = new Size(94, 17);
             label2.TabIndex = 2;
@@ -73,44 +75,48 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(253, 259);
+            txtNombre.Location = new Point(276, 281);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(249, 23);
             txtNombre.TabIndex = 3;
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(278, 289);
+            txtContraseña.Location = new Point(301, 311);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(224, 23);
+            txtContraseña.Size = new Size(194, 23);
             txtContraseña.TabIndex = 4;
             // 
             // btnVolver
             // 
+            btnVolver.BackColor = Color.Red;
             btnVolver.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.ForeColor = SystemColors.ControlLight;
             btnVolver.Location = new Point(12, 382);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(75, 23);
+            btnVolver.Size = new Size(78, 31);
             btnVolver.TabIndex = 5;
             btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
             // btnIngresar
             // 
+            btnIngresar.BackColor = Color.RoyalBlue;
             btnIngresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIngresar.Location = new Point(318, 318);
+            btnIngresar.ForeColor = SystemColors.ControlLight;
+            btnIngresar.Location = new Point(318, 340);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(124, 46);
             btnIngresar.TabIndex = 6;
             btnIngresar.Text = "Ingresar";
-            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(132, -1);
+            pictureBox1.Location = new Point(136, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(512, 254);
             pictureBox1.TabIndex = 7;

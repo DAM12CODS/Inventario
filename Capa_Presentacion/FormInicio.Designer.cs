@@ -37,19 +37,21 @@
             // 
             // Ingresar
             // 
+            Ingresar.BackColor = Color.RoyalBlue;
             Ingresar.Font = new Font("Britannic Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Ingresar.ForeColor = SystemColors.ButtonFace;
             Ingresar.Location = new Point(297, 317);
             Ingresar.Name = "Ingresar";
             Ingresar.Size = new Size(194, 80);
             Ingresar.TabIndex = 1;
             Ingresar.Text = "Ingresar";
-            Ingresar.UseVisualStyleBackColor = true;
+            Ingresar.UseVisualStyleBackColor = false;
             Ingresar.Click += Ingresar_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(162, 44);
+            pictureBox1.Location = new Point(172, 46);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(584, 251);
             pictureBox1.TabIndex = 2;
@@ -57,12 +59,15 @@
             // 
             // btnSalirPrograma
             // 
+            btnSalirPrograma.BackColor = Color.Red;
+            btnSalirPrograma.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalirPrograma.ForeColor = SystemColors.ButtonHighlight;
             btnSalirPrograma.Location = new Point(12, 12);
             btnSalirPrograma.Name = "btnSalirPrograma";
-            btnSalirPrograma.Size = new Size(71, 23);
+            btnSalirPrograma.Size = new Size(74, 29);
             btnSalirPrograma.TabIndex = 3;
             btnSalirPrograma.Text = "SALIR";
-            btnSalirPrograma.UseVisualStyleBackColor = true;
+            btnSalirPrograma.UseVisualStyleBackColor = false;
             btnSalirPrograma.Click += btnSalirPrograma_Click;
             // 
             // FormInicio

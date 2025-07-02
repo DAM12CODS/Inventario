@@ -41,9 +41,9 @@
             // btnGProductos
             // 
             btnGProductos.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGProductos.Location = new Point(64, 147);
+            btnGProductos.Location = new Point(58, 157);
             btnGProductos.Name = "btnGProductos";
-            btnGProductos.Size = new Size(188, 23);
+            btnGProductos.Size = new Size(197, 37);
             btnGProductos.TabIndex = 0;
             btnGProductos.Text = "Gestionar Productos";
             btnGProductos.UseVisualStyleBackColor = true;
@@ -52,9 +52,9 @@
             // btnGVentas
             // 
             btnGVentas.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGVentas.Location = new Point(81, 192);
+            btnGVentas.Location = new Point(77, 200);
             btnGVentas.Name = "btnGVentas";
-            btnGVentas.Size = new Size(152, 23);
+            btnGVentas.Size = new Size(150, 37);
             btnGVentas.TabIndex = 1;
             btnGVentas.Text = "Gestionar Ventas";
             btnGVentas.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@
             // btnEInventario
             // 
             btnEInventario.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEInventario.Location = new Point(81, 242);
+            btnEInventario.Location = new Point(77, 244);
             btnEInventario.Name = "btnEInventario";
-            btnEInventario.Size = new Size(150, 23);
+            btnEInventario.Size = new Size(150, 35);
             btnEInventario.TabIndex = 2;
             btnEInventario.Text = "Estado Inventario";
             btnEInventario.UseVisualStyleBackColor = true;
@@ -73,19 +73,21 @@
             // 
             // btnCerrarSesion
             // 
+            btnCerrarSesion.BackColor = Color.Red;
             btnCerrarSesion.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCerrarSesion.Location = new Point(26, 383);
+            btnCerrarSesion.ForeColor = SystemColors.ControlLight;
+            btnCerrarSesion.Location = new Point(12, 389);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(120, 23);
+            btnCerrarSesion.Size = new Size(129, 29);
             btnCerrarSesion.TabIndex = 3;
             btnCerrarSesion.Text = "Cerrar Sesion";
-            btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.UseVisualStyleBackColor = false;
             btnCerrarSesion.Click += btnCerrarSesion_Click_1;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(319, 42);
+            pictureBox1.Location = new Point(305, 56);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(445, 257);
             pictureBox1.TabIndex = 4;
@@ -95,7 +97,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Britannic Bold", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(407, 313);
+            label1.Location = new Point(393, 327);
             label1.Name = "label1";
             label1.Size = new Size(296, 27);
             label1.TabIndex = 5;

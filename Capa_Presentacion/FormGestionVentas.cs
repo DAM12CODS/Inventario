@@ -12,7 +12,7 @@ namespace Capa_Presentacion
 {
     public partial class FormGestionVentas : Form
     {
-        
+
         private FormMenuPrincipal formAnterior;
 
         // Constructor que recibe el formulario anterior
@@ -25,6 +25,11 @@ namespace Capa_Presentacion
         {
             this.Close(); // Cierra este formulario
             formAnterior.Show(); // Muestra el menú principal nuevamente
+        }
+
+        private void cmbVentaReporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
