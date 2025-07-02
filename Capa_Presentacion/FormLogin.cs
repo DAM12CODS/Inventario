@@ -46,7 +46,7 @@ namespace Capa_Presentacion
             txtContraseña.Text = "";
             txtNombre.Focus();
 
-        } 
+        }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -57,6 +57,11 @@ namespace Capa_Presentacion
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
