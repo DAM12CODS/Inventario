@@ -25,6 +25,14 @@ namespace Capa_Presentacion
             FormGestionProductos_Load(this, EventArgs.Empty);
         }
 
+        private void LimpiarCampos()
+        {
+            txtCodigo.Text = "";
+            txtNombreProducto.Text = "";
+            txtCategoria.Text = "";
+            txtCantidad.Text = "";
+            txtPrecio.Text = "";
+        }
         private void btnVolver_Click_1(object sender, EventArgs e)
         {
             this.Close(); // Cierra este formulario
@@ -63,48 +71,72 @@ namespace Capa_Presentacion
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            //var agregar = new GestionProducto();
             string codigoP = txtCodigo.Text.Trim();
             string nombreP = txtNombreProducto.Text.Trim();
             string categoriaP = txtCategoria.Text.Trim();
+
+            // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(codigoP) || string.IsNullOrWhiteSpace(nombreP) || string.IsNullOrWhiteSpace(categoriaP))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LimpiarCampos();
+                return;
+                
+            }
+            
+            // Validar que nombre y categoría contengan solo letras y espacios
+            if (!nombreP.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            {
+                MessageBox.Show("El nombre del producto solo debe contener letras.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LimpiarCampos(); 
                 return;
             }
+
+            if (!categoriaP.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            {
+                MessageBox.Show("La categoría solo debe contener letras.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LimpiarCampos();
+                return;
+            }
+
+            // Validar cantidad como número entero
             if (!int.TryParse(txtCantidad.Text.Trim(), out int cantidadP))
             {
                 MessageBox.Show("La cantidad debe ser un número entero válido.");
+                LimpiarCampos();
                 return;
             }
+
+            // Validar precio como número decimal
             if (!double.TryParse(txtPrecio.Text.Trim(), out double precioP))
             {
                 MessageBox.Show("El precio debe ser un número válido.");
+                LimpiarCampos();
                 return;
             }
-            archivo.AgregarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP,
-                precioP);
+
+            // Si todo está correcto, agregar el producto
+            archivo.AgregarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP, precioP);
+
+            // Refrescar la tabla
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = productos;
 
-            txtCodigo.Text = "";
-            txtPrecio.Text = "";
-            txtCategoria.Text = "";
-            txtCantidad.Text = "";
-            txtNombreProducto.Text = ""; 
-            //Guardar en el combobox de editar producto 
+            // Limpiar campos
+            LimpiarCampos(); 
+
+            // Actualizar ComboBox de editar y eliminar
             cmbEditar.DataSource = null;
             cmbEditar.DataSource = productos;
             cmbEditar.DisplayMember = "NombreProducto";
             cmbEditar.ValueMember = "CodigoProducto";
 
-            //Guardar en el combobox de eliminar producto
             cmbEliminar.DataSource = null;
             cmbEliminar.DataSource = productos;
             cmbEliminar.DisplayMember = "NombreProducto";
             cmbEliminar.ValueMember = "CodigoProducto";
-
         }
+
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
@@ -134,22 +166,35 @@ namespace Capa_Presentacion
                 MessageBox.Show("El precio debe ser un número válido.");
                 return;
             }
-
-            archivo.ActualizarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP, precioP);
-
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = productos;
-            txtNombreEditar.Text = "";
-            txtCategoriaEditar.Text = "";
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de realizar los cambios?", "Editar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             
-            MessageBox.Show("Producto actualizado correctamente.");
+            archivo.ActualizarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP, precioP);
+            if (resultado == DialogResult.Yes)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = productos;
+                txtNombreEditar.Text = "";
+                txtCategoriaEditar.Text = "";
+                txtCantidadEditar.Text = "";
+                txtPrecioEditar.Text = "";
+
+                MessageBox.Show("Producto actualizado correctamente.");
+            }
+            else
+            {
+                // Opcional: acción si presiona "No"
+                MessageBox.Show("Acción cancelada.");
+            }
         }
 
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            //var eliminar = new GestionProducto();
-            string codigoP = cmbEliminar.SelectedValue?.ToString().Trim();
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de eliminar el producto.", "Eliminar Producto",MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+
+            if (resultado == DialogResult.Yes)
+            {
+                string codigoP = cmbEliminar.SelectedValue?.ToString().Trim();
 
             if (cmbEliminar.SelectedIndex == -1 || cmbEliminar.SelectedValue == null)
             {
@@ -175,11 +220,30 @@ namespace Capa_Presentacion
             cmbEliminar.ValueMember = "CodigoProducto";
 
             MessageBox.Show("Producto eliminado correctamente.");
+            }
+            else
+            {
+                // Opcional: acción si presiona "No"
+                MessageBox.Show("Acción cancelada.");
+            }
+
+            
         }
 
         private void txtCategoria_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbEditar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEditar.SelectedItem is Producto productoSeleccionado)
+            {
+                txtNombreEditar.Text = productoSeleccionado.NombreProducto;
+                txtCategoriaEditar.Text = productoSeleccionado.CategoriaProducto;
+                txtCantidadEditar.Text = productoSeleccionado.CantidadProducto.ToString();
+                txtPrecioEditar.Text = productoSeleccionado.PrecioProducto.ToString("F2"); // Formato con 2 decimales, opcional
+            }
         }
     }
 

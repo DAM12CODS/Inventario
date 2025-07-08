@@ -122,7 +122,6 @@
             label4.Size = new Size(64, 15);
             label4.TabIndex = 2;
             label4.Text = "Categoría: ";
-            
             // 
             // label5
             // 
@@ -215,6 +214,7 @@
             cmbEditar.Name = "cmbEditar";
             cmbEditar.Size = new Size(121, 23);
             cmbEditar.TabIndex = 12;
+            cmbEditar.SelectedIndexChanged += cmbEditar_SelectedIndexChanged;
             // 
             // txtNombreEditar
             // 

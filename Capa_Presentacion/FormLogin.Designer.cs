@@ -42,13 +42,12 @@
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.Red;
-            btnSalir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.BackColor = SystemColors.WindowFrame;
+            btnSalir.Font = new Font("Britannic Bold", 12F);
             btnSalir.ForeColor = SystemColors.ControlLight;
-            btnSalir.Location = new Point(1103, 787);
-            btnSalir.Margin = new Padding(6, 6, 6, 6);
+            btnSalir.Location = new Point(594, 12);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(264, 77);
+            btnSalir.Size = new Size(142, 36);
             btnSalir.TabIndex = 0;
             btnSalir.Text = "Salir Programa";
             btnSalir.UseVisualStyleBackColor = false;
@@ -57,52 +56,48 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(383, 599);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Font = new Font("Britannic Bold", 12F);
+            label1.Location = new Point(206, 281);
             label1.Name = "label1";
-            label1.Size = new Size(141, 37);
+            label1.Size = new Size(69, 17);
             label1.TabIndex = 1;
             label1.Text = "Nombre:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(383, 663);
-            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Font = new Font("Britannic Bold", 12F);
+            label2.Location = new Point(206, 311);
             label2.Name = "label2";
-            label2.Size = new Size(192, 37);
+            label2.Size = new Size(94, 17);
             label2.TabIndex = 2;
             label2.Text = "Contraseña:";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(513, 599);
-            txtNombre.Margin = new Padding(6, 6, 6, 6);
+            txtNombre.Location = new Point(301, 281);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(459, 39);
+            txtNombre.Size = new Size(224, 23);
             txtNombre.TabIndex = 3;
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(559, 663);
-            txtContraseña.Margin = new Padding(6, 6, 6, 6);
+            txtContraseña.Location = new Point(301, 311);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
-            txtContraseña.Size = new Size(357, 39);
+            txtContraseña.Size = new Size(224, 23);
             txtContraseña.TabIndex = 4;
             txtContraseña.TextChanged += txtContraseña_TextChanged;
+            txtContraseña.KeyPress += txtContraseña_KeyPress;
             // 
             // btnVolver
             // 
-            btnVolver.BackColor = Color.Red;
-            btnVolver.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.BackColor = SystemColors.WindowFrame;
+            btnVolver.Font = new Font("Britannic Bold", 12F);
             btnVolver.ForeColor = SystemColors.ControlLight;
-            btnVolver.Location = new Point(22, 815);
-            btnVolver.Margin = new Padding(6, 6, 6, 6);
+            btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(145, 66);
+            btnVolver.Size = new Size(78, 31);
             btnVolver.TabIndex = 5;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
@@ -111,12 +106,11 @@
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.RoyalBlue;
-            btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIngresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIngresar.ForeColor = SystemColors.ControlLight;
-            btnIngresar.Location = new Point(591, 725);
-            btnIngresar.Margin = new Padding(6, 6, 6, 6);
+            btnIngresar.Location = new Point(318, 340);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(230, 98);
+            btnIngresar.Size = new Size(124, 46);
             btnIngresar.TabIndex = 6;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
@@ -125,18 +119,18 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(253, 26);
-            pictureBox1.Margin = new Padding(6, 6, 6, 6);
+            pictureBox1.Location = new Point(136, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(951, 542);
+            pictureBox1.Size = new Size(512, 254);
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
             // FormLogin
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1389, 890);
+            ClientSize = new Size(748, 413);
+            Controls.Add(btnSalir);
             Controls.Add(pictureBox1);
             Controls.Add(btnIngresar);
             Controls.Add(btnVolver);
@@ -144,8 +138,6 @@
             Controls.Add(txtNombre);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnSalir);
-            Margin = new Padding(6, 6, 6, 6);
             Name = "FormLogin";
             Text = "FormLogin";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

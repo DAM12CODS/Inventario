@@ -20,6 +20,7 @@ namespace Capa_Presentacion
             this.formAnterior = anterior;
         }
 
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string usuario = txtNombre.Text.Trim();
@@ -63,5 +64,16 @@ namespace Capa_Presentacion
         {
 
         }
+
+        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             
+            if (e.KeyChar == (char)13) // 13 es Enter
+            {
+                btnIngresar.PerformClick(); // Ejecuta el botón Ingresar
+                e.Handled = true;           // Evita que el enter haga un beep o efecto no deseado
+            }
+         
+    }
     }
 }
