@@ -228,12 +228,14 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Categoria, PrecioUnitario });
             dataGridView1.Location = new Point(463, 99);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(443, 135);
             dataGridView1.TabIndex = 16;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Nombre
             // 
@@ -257,12 +259,14 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.AllowUserToAddRows = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { IdVenta, Productos, Cantidad, PrecioUnitarioVenta, PrecioTotal });
             dataGridView2.Location = new Point(463, 331);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(443, 122);
             dataGridView2.TabIndex = 17;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // IdVenta
             // 

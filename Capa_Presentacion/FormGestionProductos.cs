@@ -81,14 +81,29 @@ namespace Capa_Presentacion
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LimpiarCampos();
                 return;
-                
             }
-            
+
+            // ✅ Validar que el código tenga exactamente 6 caracteres
+            if (codigoP.Length != 6)
+            {
+                MessageBox.Show("El código del producto debe tener exactamente 6 caracteres.", "Código inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodigo.Focus();
+                return;
+            }
+
+            // ✅ Validar que el código no esté repetido
+            if (productos.Any(p => p.CodigoProducto.Equals(codigoP, StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show("Ya existe un producto con ese código.", "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodigo.Focus();
+                return;
+            }
+
             // Validar que nombre y categoría contengan solo letras y espacios
             if (!nombreP.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
             {
                 MessageBox.Show("El nombre del producto solo debe contener letras.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                LimpiarCampos(); 
+                LimpiarCampos();
                 return;
             }
 
@@ -115,7 +130,7 @@ namespace Capa_Presentacion
                 return;
             }
 
-            // Si todo está correcto, agregar el producto
+            // ✅ Si todo está correcto, agregar el producto
             archivo.AgregarProducto(productosCSV, encabezado, productos, codigoP, nombreP, categoriaP, cantidadP, precioP);
 
             // Refrescar la tabla
@@ -123,7 +138,7 @@ namespace Capa_Presentacion
             dataGridView1.DataSource = productos;
 
             // Limpiar campos
-            LimpiarCampos(); 
+            LimpiarCampos();
 
             // Actualizar ComboBox de editar y eliminar
             cmbEditar.DataSource = null;
@@ -136,6 +151,7 @@ namespace Capa_Presentacion
             cmbEliminar.DisplayMember = "NombreProducto";
             cmbEliminar.ValueMember = "CodigoProducto";
         }
+
 
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)

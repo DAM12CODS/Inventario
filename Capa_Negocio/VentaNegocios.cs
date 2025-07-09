@@ -1,14 +1,18 @@
 ﻿using System;
 using Inventario;
 using Capa_Entidad;
+using CapaDatos; 
 namespace CapaNegocios
 {
     public class VentaNegocios
     {
-        public void RegistrarVenta(Venta venta)
+        public void RegistrarVenta(Venta venta, string archivoProductosCSV, string encabezadoCSV, List<Producto> productos)
         {
             if (venta == null)
                 throw new ArgumentNullException(nameof(venta));
+
+            if (venta.Detalles == null || !venta.Detalles.Any())
+                throw new InvalidOperationException("La venta no contiene productos.");
 
             foreach (var detalle in venta.Detalles)
             {
@@ -21,6 +25,11 @@ namespace CapaNegocios
                 producto.CantidadProducto -= detalle.Cantidad;
             }
 
+            // Guardar cambios en archivo CSV (Excel)
+            Datos.GestionProducto gestor = new Datos.GestionProducto();
+
+            string tempFile = Path.GetTempFileName();
+            gestor.ReescribirArchivo(tempFile, archivoProductosCSV, encabezadoCSV, productos);
         }
 
         public DetalleVenta CrearDetalleVenta(Producto producto, int cantidad)
@@ -29,7 +38,7 @@ namespace CapaNegocios
                 throw new ArgumentNullException(nameof(producto));
 
             if (cantidad <= 0)
-                throw new ArgumentOutOfRangeException(nameof(cantidad));
+                throw new ArgumentOutOfRangeException(nameof(cantidad), "La cantidad debe ser mayor que cero.");
 
             return new DetalleVenta(producto, cantidad);
         }
