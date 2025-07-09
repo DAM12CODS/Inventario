@@ -121,6 +121,7 @@
             cmbProductosVenta.Name = "cmbProductosVenta";
             cmbProductosVenta.Size = new Size(121, 23);
             cmbProductosVenta.TabIndex = 4;
+            cmbProductosVenta.SelectedIndexChanged += cmbProductosVenta_SelectedIndexChanged;
             // 
             // txtCantidadProducto
             // 
@@ -137,6 +138,7 @@
             btnAgregarProducto.TabIndex = 6;
             btnAgregarProducto.Text = "Agregar Producto";
             btnAgregarProducto.UseVisualStyleBackColor = true;
+            btnAgregarProducto.Click += btnAgregarProducto_Click;
             // 
             // btnRegistrarVenta
             // 
@@ -146,6 +148,7 @@
             btnRegistrarVenta.TabIndex = 7;
             btnRegistrarVenta.Text = "Registrar Venta";
             btnRegistrarVenta.UseVisualStyleBackColor = true;
+            btnRegistrarVenta.Click += btnRegistrarVenta_Click;
             // 
             // label4
             // 
@@ -184,7 +187,6 @@
             label7.Size = new Size(98, 15);
             label7.TabIndex = 11;
             label7.Text = "Seleccione Venta:";
-            
             // 
             // cmbEliminarVenta
             // 
@@ -193,6 +195,7 @@
             cmbEliminarVenta.Name = "cmbEliminarVenta";
             cmbEliminarVenta.Size = new Size(121, 23);
             cmbEliminarVenta.TabIndex = 12;
+            cmbEliminarVenta.SelectedIndexChanged += cmbEliminarVenta_SelectedIndexChanged;
             // 
             // cmbVentaReporte
             // 
@@ -211,6 +214,7 @@
             btnEliminarVenta.TabIndex = 14;
             btnEliminarVenta.Text = "Eliminar venta";
             btnEliminarVenta.UseVisualStyleBackColor = true;
+            btnEliminarVenta.Click += btnEliminarVenta_Click;
             // 
             // btnGenerarReporte
             // 
@@ -220,6 +224,7 @@
             btnGenerarReporte.TabIndex = 15;
             btnGenerarReporte.Text = "Generar Reporte";
             btnGenerarReporte.UseVisualStyleBackColor = true;
+            btnGenerarReporte.Click += btnGenerarReporte_Click;
             // 
             // dataGridView1
             // 

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Inventario;
 
 namespace Capa_Entidad
 {
     public class DetalleVenta
     {
-        public IProducto Producto { get; set; }
+        public Producto Producto { get; set; }
         public int Cantidad { get; set; }
         public double PrecioUnitario => Producto.PrecioProducto;
         public double Subtotal => Cantidad * PrecioUnitario;
 
-        public DetalleVenta(IProducto producto, int cantidad)
+        public DetalleVenta(Producto producto, int cantidad)
         {
             if (cantidad <= 0)
             {
