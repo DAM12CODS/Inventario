@@ -97,7 +97,7 @@ namespace Inventario
             set
             {
                 // Validación: la cantidad debe ser mayor que cero
-                if (value <= 0)
+                if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "La cantidad debe ser mayor que cero.");
                 }

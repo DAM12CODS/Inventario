@@ -37,6 +37,9 @@
             btnVolver = new Button();
             btnIngresar = new Button();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Britannic Bold", 12F);
-            label1.Location = new Point(206, 281);
+            label1.Location = new Point(206, 184);
             label1.Name = "label1";
             label1.Size = new Size(69, 17);
             label1.TabIndex = 1;
@@ -67,7 +70,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Britannic Bold", 12F);
-            label2.Location = new Point(206, 311);
+            label2.Location = new Point(206, 215);
             label2.Name = "label2";
             label2.Size = new Size(94, 17);
             label2.TabIndex = 2;
@@ -75,14 +78,14 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(301, 281);
+            txtNombre.Location = new Point(310, 184);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(224, 23);
             txtNombre.TabIndex = 3;
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(301, 311);
+            txtContraseña.Location = new Point(310, 214);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
             txtContraseña.Size = new Size(224, 23);
@@ -108,11 +111,11 @@
             btnIngresar.BackColor = Color.RoyalBlue;
             btnIngresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIngresar.ForeColor = SystemColors.ControlLight;
-            btnIngresar.Location = new Point(318, 340);
+            btnIngresar.Location = new Point(253, 247);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(124, 46);
+            btnIngresar.Size = new Size(255, 29);
             btnIngresar.TabIndex = 6;
-            btnIngresar.Text = "Ingresar";
+            btnIngresar.Text = "Iniciar Sesión";
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
@@ -121,15 +124,51 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(136, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(512, 254);
+            pictureBox1.Size = new Size(512, 157);
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.Window;
+            button1.Location = new Point(310, 419);
+            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(151, 20);
+            button1.TabIndex = 8;
+            button1.Text = "Crear una cuenta";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(270, 380);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(206, 15);
+            label3.TabIndex = 9;
+            label3.Text = "¿Es la primera vez que usas Inventory?";
+            label3.Click += label3_Click;
+            // 
+            // label4
+            // 
+            label4.Location = new Point(270, 298);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(210, 55);
+            label4.TabIndex = 10;
+            label4.Text = "Es gratis y muy fácil. Descubre miles de programas para usarlos en tus proyectos de venta.";
+            label4.Click += label4_Click;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(748, 413);
+            ClientSize = new Size(748, 477);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(button1);
             Controls.Add(btnSalir);
             Controls.Add(pictureBox1);
             Controls.Add(btnIngresar);
@@ -155,5 +194,8 @@
         private Button btnVolver;
         private Button btnIngresar;
         private PictureBox pictureBox1;
+        private Button button1;
+        private Label label3;
+        private Label label4;
     }
 }

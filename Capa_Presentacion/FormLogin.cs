@@ -74,6 +74,21 @@ namespace Capa_Presentacion
                 e.Handled = true;           // Evita que el enter haga un beep o efecto no deseado
             }
          
-    }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
