@@ -8,6 +8,10 @@ namespace Capa_Presentacion
         private FormMenuPrincipal formAnterior;
 
         private List<Producto> productos = new List<Producto>();
+
+        private List<String> categorias = new List<String> { "Frutas y verduras","Carnes y embutidos", "Bebidas",
+        "Cereales y productos secos", "Detergentes y jabones","Desinfectantes","Champús y acondicionadores","Desodorantes"};
+
         private string productosCSV = "productos.csv";
         private string encabezado = "Codigo;Nombre;Categoria;Cantidad;Precio";
         GestionProducto archivo = new GestionProducto();
@@ -68,12 +72,17 @@ namespace Capa_Presentacion
             // Mostrar productos en el DataGrid
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = productos;
+
+            // Lita de Categorias
+            cmbCategorias.DataSource = null;
+            cmbCategorias.DataSource = categorias;
+            cmbCategorias2.DataSource = categorias;
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             string codigoP = txtCodigo.Text.Trim();
             string nombreP = txtNombreProducto.Text.Trim();
-            string categoriaP = txtCategoria.Text.Trim();
+            string categoriaP = cmbCategorias.SelectedValue?.ToString().Trim();
             string cantidadText = txtCantidad.Text.Trim();
             string precioText = txtPrecio.Text.Trim();
 
@@ -188,7 +197,7 @@ namespace Capa_Presentacion
 
             string codigoP = cmbEditar.SelectedValue?.ToString().Trim();
             string nombreP = txtNombreEditar.Text.Trim();
-            string categoriaP = txtCategoriaEditar.Text.Trim();
+            string categoriaP = cmbCategorias2.SelectedValue?.ToString().Trim();
             if (string.IsNullOrWhiteSpace(codigoP) || string.IsNullOrWhiteSpace(nombreP) || string.IsNullOrWhiteSpace(categoriaP))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);

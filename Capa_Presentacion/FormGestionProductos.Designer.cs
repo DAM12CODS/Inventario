@@ -65,6 +65,8 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
+            cmbCategorias = new ComboBox();
+            cmbCategorias2 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -117,7 +119,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(21, 154);
+            label4.Location = new Point(20, 159);
             label4.Name = "label4";
             label4.Size = new Size(64, 15);
             label4.TabIndex = 2;
@@ -135,7 +137,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(22, 194);
+            label6.Location = new Point(22, 197);
             label6.Name = "label6";
             label6.Size = new Size(46, 15);
             label6.TabIndex = 2;
@@ -158,7 +160,7 @@
             // 
             // txtCategoria
             // 
-            txtCategoria.Location = new Point(90, 151);
+            txtCategoria.Location = new Point(149, 254);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(100, 23);
             txtCategoria.TabIndex = 6;
@@ -173,7 +175,7 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(90, 191);
+            txtPrecio.Location = new Point(90, 194);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(100, 23);
             txtPrecio.TabIndex = 8;
@@ -225,7 +227,7 @@
             // 
             // txtCategoriaEditar
             // 
-            txtCategoriaEditar.Location = new Point(106, 393);
+            txtCategoriaEditar.Location = new Point(292, 254);
             txtCategoriaEditar.Name = "txtCategoriaEditar";
             txtCategoriaEditar.Size = new Size(100, 23);
             txtCategoriaEditar.TabIndex = 14;
@@ -393,11 +395,29 @@
             pictureBox5.TabIndex = 30;
             pictureBox5.TabStop = false;
             // 
+            // cmbCategorias
+            // 
+            cmbCategorias.FormattingEnabled = true;
+            cmbCategorias.Location = new Point(90, 156);
+            cmbCategorias.Name = "cmbCategorias";
+            cmbCategorias.Size = new Size(100, 23);
+            cmbCategorias.TabIndex = 31;
+            // 
+            // cmbCategorias2
+            // 
+            cmbCategorias2.FormattingEnabled = true;
+            cmbCategorias2.Location = new Point(106, 393);
+            cmbCategorias2.Name = "cmbCategorias2";
+            cmbCategorias2.Size = new Size(100, 23);
+            cmbCategorias2.TabIndex = 32;
+            // 
             // FormGestionProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(995, 598);
+            Controls.Add(cmbCategorias2);
+            Controls.Add(cmbCategorias);
             Controls.Add(label9);
             Controls.Add(dataGridView1);
             Controls.Add(btnEliminar);
@@ -484,5 +504,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
+        private ComboBox cmbCategorias;
+        private ComboBox cmbCategorias2;
     }
 }
