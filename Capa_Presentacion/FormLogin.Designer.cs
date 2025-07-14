@@ -37,7 +37,7 @@
             btnVolver = new Button();
             btnIngresar = new Button();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
+            btnCrearCuenta = new Button();
             label3 = new Label();
             label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -128,17 +128,17 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnCrearCuenta
             // 
-            button1.BackColor = SystemColors.Window;
-            button1.Location = new Point(310, 419);
-            button1.Margin = new Padding(2, 2, 2, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(151, 20);
-            button1.TabIndex = 8;
-            button1.Text = "Crear una cuenta";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnCrearCuenta.BackColor = SystemColors.Window;
+            btnCrearCuenta.Location = new Point(310, 419);
+            btnCrearCuenta.Margin = new Padding(2);
+            btnCrearCuenta.Name = "btnCrearCuenta";
+            btnCrearCuenta.Size = new Size(151, 20);
+            btnCrearCuenta.TabIndex = 8;
+            btnCrearCuenta.Text = "Crear una cuenta";
+            btnCrearCuenta.UseVisualStyleBackColor = false;
+            btnCrearCuenta.Click += button1_Click;
             // 
             // label3
             // 
@@ -168,7 +168,7 @@
             ClientSize = new Size(748, 477);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(button1);
+            Controls.Add(btnCrearCuenta);
             Controls.Add(btnSalir);
             Controls.Add(pictureBox1);
             Controls.Add(btnIngresar);
@@ -194,7 +194,7 @@
         private Button btnVolver;
         private Button btnIngresar;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button btnCrearCuenta;
         private Label label3;
         private Label label4;
     }

@@ -43,6 +43,5 @@ namespace CapaNegocios
             return new DetalleVenta(producto, cantidad);
         }
 
-
     }
 }

@@ -29,8 +29,6 @@ namespace Inventario
         }
 
 
-
-
         //Validaciones
 
         // Propiedad para el código del producto con validación

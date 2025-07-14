@@ -69,7 +69,6 @@ namespace Datos
             string tempFile = Path.GetTempFileName();
             try
             {
-
                 Console.WriteLine("Cantidad de productos: " + productos.Count);
                 foreach (var p in productos)
                 {
@@ -86,8 +85,6 @@ namespace Datos
                     productos[i].CategoriaProducto = categoria;
                     productos[i].CantidadProducto = cantidad;
                     productos[i].PrecioProducto = precio;
-
-
                 }
                 else
                 {

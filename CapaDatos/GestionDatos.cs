@@ -11,6 +11,5 @@ namespace Datos
                 File.WriteAllText(archivo, entrada + Environment.NewLine);
             }
         }
-
     }
 }
