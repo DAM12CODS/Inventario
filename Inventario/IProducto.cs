@@ -11,7 +11,6 @@ namespace Capa_Entidad
         string CodigoProducto { get; set; }
         string NombreProducto { get; set; }
         string CategoriaProducto { get; set; }
-        //bool EstadoProducto { get; set; }
         int CantidadProducto { get; set; }
         double PrecioProducto { get; set; }
     }

@@ -288,7 +288,7 @@ namespace Capa_Presentacion
             if (cmbEditar.SelectedItem is Producto productoSeleccionado)
             {
                 txtNombreEditar.Text = productoSeleccionado.NombreProducto;
-                txtCategoriaEditar.Text = productoSeleccionado.CategoriaProducto;
+               // txtCategoriaEditar.Text = productoSeleccionado.CategoriaProducto;
                 txtCantidadEditar.Text = productoSeleccionado.CantidadProducto.ToString();
                 txtPrecioEditar.Text = productoSeleccionado.PrecioProducto.ToString("F2"); // Formato con 2 decimales, opcional
             }

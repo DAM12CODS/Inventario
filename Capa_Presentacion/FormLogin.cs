@@ -7,24 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Entidad;
+using CapaDatos;
 
 namespace Capa_Presentacion
 {
     public partial class FormLogin : Form
     {
+        //Inicializacion de variables
         private FormInicio formAnterior;
-
+        private static string rutaUsuarios = "usuarios.csv";
+        private static string encabezadoUsuarios = "Nombre;Apellido;Email;Password;Rol";
+        private List<Usuario> usuarios = new List<Usuario>();
+        GestionUsuario gestor = new GestionUsuario();
         public FormLogin(FormInicio anterior)
         {
             InitializeComponent();
             this.formAnterior = anterior;
+            usuarios = gestor.CargarUsuarios(rutaUsuarios, encabezadoUsuarios);
+
         }
-
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string usuario = txtNombre.Text.Trim();
             string contraseña = txtContraseña.Text.Trim();
+
+           
 
             if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contraseña))
             {
@@ -32,8 +40,12 @@ namespace Capa_Presentacion
                 return;
             }
 
+            //Busca al usuario de la "Base de datos"
+            Usuario? user = usuarios.FirstOrDefault(u =>
+                            u.Nombre.Equals(usuario, StringComparison.OrdinalIgnoreCase) &&
+                            u.Pass == contraseña);
 
-            if (usuario == "admin" && contraseña == "1234")
+            if (user != null)
             {
                 FormMenuPrincipal menu = new FormMenuPrincipal(this);
                 menu.Show();

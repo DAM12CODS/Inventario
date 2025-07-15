@@ -38,7 +38,6 @@
             label6 = new Label();
             txtNombreProducto = new TextBox();
             txtCodigo = new TextBox();
-            txtCategoria = new TextBox();
             txtCantidad = new TextBox();
             txtPrecio = new TextBox();
             btnRegistrar = new Button();
@@ -46,7 +45,6 @@
             label8 = new Label();
             cmbEditar = new ComboBox();
             txtNombreEditar = new TextBox();
-            txtCategoriaEditar = new TextBox();
             txtCantidadEditar = new TextBox();
             txtPrecioEditar = new TextBox();
             label10 = new Label();
@@ -67,6 +65,8 @@
             pictureBox5 = new PictureBox();
             cmbCategorias = new ComboBox();
             cmbCategorias2 = new ComboBox();
+            txtCategoriaEditar = new TextBox();
+            txtCategoria = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -158,14 +158,6 @@
             txtCodigo.Size = new Size(100, 23);
             txtCodigo.TabIndex = 5;
             // 
-            // txtCategoria
-            // 
-            txtCategoria.Location = new Point(149, 254);
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(100, 23);
-            txtCategoria.TabIndex = 6;
-            txtCategoria.TextChanged += txtCategoria_TextChanged;
-            // 
             // txtCantidad
             // 
             txtCantidad.Location = new Point(292, 151);
@@ -224,13 +216,6 @@
             txtNombreEditar.Name = "txtNombreEditar";
             txtNombreEditar.Size = new Size(100, 23);
             txtNombreEditar.TabIndex = 13;
-            // 
-            // txtCategoriaEditar
-            // 
-            txtCategoriaEditar.Location = new Point(292, 254);
-            txtCategoriaEditar.Name = "txtCategoriaEditar";
-            txtCategoriaEditar.Size = new Size(100, 23);
-            txtCategoriaEditar.TabIndex = 14;
             // 
             // txtCantidadEditar
             // 
@@ -411,6 +396,25 @@
             cmbCategorias2.Size = new Size(100, 23);
             cmbCategorias2.TabIndex = 32;
             // 
+            // txtCategoriaEditar
+            // 
+            txtCategoriaEditar.BackColor = SystemColors.Control;
+            txtCategoriaEditar.BorderStyle = BorderStyle.None;
+            txtCategoriaEditar.Location = new Point(493, 570);
+            txtCategoriaEditar.Name = "txtCategoriaEditar";
+            txtCategoriaEditar.Size = new Size(100, 16);
+            txtCategoriaEditar.TabIndex = 14;
+            // 
+            // txtCategoria
+            // 
+            txtCategoria.BackColor = SystemColors.Control;
+            txtCategoria.BorderStyle = BorderStyle.None;
+            txtCategoria.Location = new Point(615, 570);
+            txtCategoria.Name = "txtCategoria";
+            txtCategoria.Size = new Size(100, 16);
+            txtCategoria.TabIndex = 6;
+            txtCategoria.TextChanged += txtCategoria_TextChanged;
+            // 
             // FormGestionProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -477,7 +481,6 @@
         private Label label6;
         private TextBox txtNombreProducto;
         private TextBox txtCodigo;
-        private TextBox txtCategoria;
         private TextBox txtCantidad;
         private TextBox txtPrecio;
         private Button btnRegistrar;
@@ -485,7 +488,6 @@
         private Label label8;
         private ComboBox cmbEditar;
         private TextBox txtNombreEditar;
-        private TextBox txtCategoriaEditar;
         private TextBox txtCantidadEditar;
         private TextBox txtPrecioEditar;
         private Label label10;
@@ -506,5 +508,7 @@
         private PictureBox pictureBox5;
         private ComboBox cmbCategorias;
         private ComboBox cmbCategorias2;
+        private TextBox txtCategoriaEditar;
+        private TextBox txtCategoria;
     }
 }

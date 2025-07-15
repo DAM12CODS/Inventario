@@ -15,8 +15,9 @@ namespace Capa_Presentacion
     {
 
         private static string rutaUsuarios = "usuarios.csv";
-        private static string encabezadoUsuarios = "Nombre;Apellido;Email;Password";
+        private static string encabezadoUsuarios = "Nombre;Apellido;Email;Password;Rol";
         private List<Usuario> usuarios = new List<Usuario>();
+        private List<String> roles = new List<string> { "Administrador", "Local" };
         GestionUsuario gestor = new GestionUsuario();
         public FormCrearUsuario()
         {
@@ -30,9 +31,16 @@ namespace Capa_Presentacion
                 txtNombre.Text.Trim(),
                 txtApellido.Text.Trim(),
                 txtEmail.Text.Trim(),
-                txtPassword.Text.Trim()
+                txtPassword.Text.Trim(),
+                cmbRoles.SelectedValue?.ToString().Trim()
                 );
             gestor.RegistrarUsuarios(rutaUsuarios, encabezadoUsuarios, usuario, usuarios);
+        }
+
+        private void FormCrearUsuario_Load(object sender, EventArgs e)
+        {
+            cmbRoles.DataSource = null;
+            cmbRoles.DataSource = roles;
         }
     }
 }

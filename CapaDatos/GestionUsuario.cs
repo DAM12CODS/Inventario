@@ -22,7 +22,7 @@ namespace CapaDatos
                 var partes = lineas[i].Split(';');
                 if (partes.Length >= 5)
                 {
-                    var usuario = new Usuario(partes[0], partes[1], partes[2], partes[3]);
+                    var usuario = new Usuario(partes[0], partes[1], partes[2], partes[3], partes[4]);
                     usuarios.Add(usuario);
                 }
             }
@@ -37,7 +37,7 @@ namespace CapaDatos
                 using (StreamWriter datos = File.AppendText(ruta))
                 {
                     usuarios.Add(usuario);
-                    datos.WriteLine($"{usuario.Nombre};{usuario.Apellido};{usuario.Email};{usuario.Pass}");
+                    datos.WriteLine($"{usuario.Nombre};{usuario.Apellido};{usuario.Email};{usuario.Pass};{usuario.Rol}");
                 }
             }catch (Exception ex)
             {

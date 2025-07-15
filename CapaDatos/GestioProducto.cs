@@ -28,12 +28,9 @@ namespace Datos
                             //bool disponible;
                             int cantidad;
                             double precio;
-                            // Intenta convertir los valores (maneja posibles errores de formato)
-                            //bool.TryParse(items[3], out disponible);
                             int.TryParse(items[3], out cantidad);
                             double.TryParse(items[4], out precio);
                             var producto = new Producto(items[0], items[1], items[2],
-                                // disponible,
                                 cantidad, precio);
                             productos.Add(producto);
                         }
@@ -96,12 +93,6 @@ namespace Datos
             catch (IOException e)
             {
                 throw new Exception("Error al leer el archivo" + e.Message);
-                // Limpiar archivo temporal en caso de error
-                /*              if (File.Exists(tempFile))
-				              {
-				                  File.Delete(tempFile);
-				              }
-				  */
             }
         }
         public void EliminarProducto(string archivo, string entrada, List<Producto> productos, string codigo)
@@ -119,11 +110,6 @@ namespace Datos
             catch (IOException e)
             {
                 throw new Exception("Error al leer el archivo" + e.Message);
-                /*      if (File.Exists(tempFile))
-				      {
-				          File.Delete(tempFile);
-				      }
-				 */
             }
         }
         //Metodo para generar el archivo con los cambios

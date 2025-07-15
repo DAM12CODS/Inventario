@@ -33,6 +33,7 @@
             txtEmail = new TextBox();
             txtPassword = new TextBox();
             btnCrear = new Button();
+            cmbRoles = new ComboBox();
             SuspendLayout();
             // 
             // txtNombre
@@ -73,11 +74,20 @@
             btnCrear.UseVisualStyleBackColor = true;
             btnCrear.Click += btnCrear_Click;
             // 
+            // cmbRoles
+            // 
+            cmbRoles.FormattingEnabled = true;
+            cmbRoles.Location = new Point(376, 32);
+            cmbRoles.Name = "cmbRoles";
+            cmbRoles.Size = new Size(121, 23);
+            cmbRoles.TabIndex = 5;
+            // 
             // FormCrearUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cmbRoles);
             Controls.Add(btnCrear);
             Controls.Add(txtPassword);
             Controls.Add(txtEmail);
@@ -85,6 +95,7 @@
             Controls.Add(txtNombre);
             Name = "FormCrearUsuario";
             Text = "FormCrearUsuario";
+            Load += FormCrearUsuario_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -96,5 +107,6 @@
         private TextBox txtEmail;
         private TextBox txtPassword;
         private Button btnCrear;
+        private ComboBox cmbRoles;
     }
 }
