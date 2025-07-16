@@ -32,7 +32,7 @@ namespace Capa_Presentacion
             string usuario = txtNombre.Text.Trim();
             string contraseña = txtContraseña.Text.Trim();
 
-           
+
 
             if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contraseña))
             {
@@ -79,13 +79,13 @@ namespace Capa_Presentacion
 
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
-             
+
             if (e.KeyChar == (char)13) // 13 es Enter
             {
                 btnIngresar.PerformClick(); // Ejecuta el botón Ingresar
                 e.Handled = true;           // Evita que el enter haga un beep o efecto no deseado
             }
-         
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -101,6 +101,11 @@ namespace Capa_Presentacion
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
         {
 
         }

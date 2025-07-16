@@ -179,6 +179,7 @@
             Controls.Add(label1);
             Name = "FormLogin";
             Text = "FormLogin";
+            Load += FormLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
