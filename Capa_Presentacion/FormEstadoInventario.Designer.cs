@@ -34,9 +34,12 @@
             pictureBox1 = new PictureBox();
             label9 = new Label();
             pictureBox2 = new PictureBox();
+            label1 = new Label();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // btnVolver
@@ -44,22 +47,22 @@
             btnVolver.BackColor = Color.Red;
             btnVolver.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = SystemColors.ControlLight;
-            btnVolver.Location = new Point(691, 17);
+            btnVolver.Location = new Point(952, 23);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(97, 33);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
-            btnVolver.Click += btnVolver_Click_1;
+            btnVolver.Click += BtnVolver_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(127, 86);
+            dataGridView1.Location = new Point(453, 120);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(543, 332);
             dataGridView1.TabIndex = 1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             // 
             // pictureBox1
             // 
@@ -85,28 +88,52 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(228, 1);
+            pictureBox2.Location = new Point(287, 1);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(800, 71);
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Britannic Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(46, 170);
+            label1.Name = "label1";
+            label1.Size = new Size(333, 27);
+            label1.TabIndex = 31;
+            label1.Text = "Estado general del inventario:";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(97, 223);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(234, 172);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 32;
+            pictureBox3.TabStop = false;
+            // 
             // FormEstadoInventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1086, 514);
+            Controls.Add(pictureBox3);
+            Controls.Add(label1);
             Controls.Add(label9);
             Controls.Add(dataGridView1);
             Controls.Add(btnVolver);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEstadoInventario";
-            Text = "FormEstadoInventario";
+            Text = "Estado Inventario";
             Load += FormEstadoInventario_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,5 +150,7 @@
         private PictureBox pictureBox1;
         private Label label9;
         private PictureBox pictureBox2;
+        private Label label1;
+        private PictureBox pictureBox3;
     }
 }

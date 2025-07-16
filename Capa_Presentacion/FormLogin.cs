@@ -1,30 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿// <copyright file="FormLogin.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Capa_Presentacion
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Capa_Entidad;
+    using CapaDatos;
+
+    /// <summary>
+    /// Muestra el estado de inicio del programa para ingresar, además permite volver al form anterior.
+    /// </summary>
     public partial class FormLogin : Form
     {
-        private FormInicio formAnterior;
+        private static string rutaUsuarios = "usuarios.csv";
+        private static string encabezadoUsuarios = "Nombre;Apellido;Email;Password;Rol";
+        private List<Usuario> usuarios = new List<Usuario>();
+        private GestionUsuario gestor = new GestionUsuario();
 
-        public FormLogin(FormInicio anterior)
+        private bool cerrarSinConfirmacion = false;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormLogin"/> class.
+        /// </summary>
+        public FormLogin()
         {
-            InitializeComponent();
-            this.formAnterior = anterior;
+            this.InitializeComponent();
+            this.FormClosing += FormLogin_FormClosing;
+
+            // Carga usuarios desde el archivo CSV
+            this.usuarios = gestor.CargarUsuarios(rutaUsuarios, encabezadoUsuarios);
         }
 
-
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string usuario = txtNombre.Text.Trim();
-            string contraseña = txtContraseña.Text.Trim();
+            if (cerrarSinConfirmacion)
+                return;
+
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea salir del programa?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            string usuario = this.txtNombre.Text.Trim();
+            string contraseña = this.txtContraseña.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contraseña))
             {
@@ -32,10 +70,20 @@ namespace Capa_Presentacion
                 return;
             }
 
+            // Validación contra lista de usuarios
+            Usuario? user = this.usuarios.FirstOrDefault(u => !(!u.Nombre.Equals(usuario, StringComparison.OrdinalIgnoreCase)
+            || u.Pass != contraseña));
 
-            if (usuario == "admin" && contraseña == "1234")
+            if (user != null )
             {
-                FormMenuPrincipal menu = new FormMenuPrincipal(this);
+                FormMenuPrincipal menu = new FormMenuPrincipal();
+
+                menu.FormClosed += (s, args) =>
+                {
+                    cerrarSinConfirmacion = true;
+                    this.Close();
+                };
+
                 menu.Show();
                 this.Hide();
             }
@@ -43,52 +91,50 @@ namespace Capa_Presentacion
             {
                 MessageBox.Show("Credenciales incorrectas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            txtNombre.Text = "";
-            txtContraseña.Text = "";
-            txtNombre.Focus();
 
+            this.txtNombre.Text = string.Empty;
+            this.txtContraseña.Text = string.Empty;
+            this.txtNombre.Focus();
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
+        private void BtnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();               // Cierra FormLogin
-            formAnterior.Show();
+            this.Hide();
+            FormInicio inicio = new FormInicio();
+            inicio.Show();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        private void TxtContraseña_TextChanged(object sender, EventArgs e)
         {
-
         }
 
-        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
-             
-            if (e.KeyChar == (char)13) // 13 es Enter
+            if (e.KeyChar == (char)13)
             {
-                btnIngresar.PerformClick(); // Ejecuta el botón Ingresar
-                e.Handled = true;           // Evita que el enter haga un beep o efecto no deseado
+                this.btnIngresar.PerformClick();
+                e.Handled = true;
             }
-         
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-
+            FormCrearUsuario formCrearUsuario = new FormCrearUsuario();
+            formCrearUsuario.Show();
+            this.Hide();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void Label4_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void Label3_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

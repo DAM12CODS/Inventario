@@ -1,73 +1,100 @@
-﻿using Capa_Entidad;
+﻿// <copyright file="Producto.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Inventario
 {
-  
-    // Clase Producto que implementa la interfaz IProducto
+    using Capa_Entidad;
+
+    /// <summary>
+    /// Es el objeto producto que se genera en base a un contrato llamado IProducto.
+    /// </summary>
     public class Producto : IProducto
     {
         // Atributos privados que almacenan la información del producto
-        private string _codigoProducto;
-        private string _nombreProducto;
-        private string _categoriaProducto;
-        //private bool _estadoProducto;
-        private int _cantidadProducto;
-        private double _precioProducto;
+        private string codigoProducto;
+        private string nombreProducto;
+        private string categoriaProducto;
+        private int cantidadProducto;
+        private double precioProducto;
 
-        // Constructor que inicializa todos los atributos del producto
-        public Producto(string codigoProducto, string nombreProducto, string categoriaProducto, int cantidadProducto, double precioProducto)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Producto"/> class.
+        /// Inicializa una nueva instancia de la clase <see cref="Producto"/>.
+        /// </summary>
+        /// <param name="codigoProducto">Código único del producto.</param>
+        /// <param name="nombreProducto">Nombre descriptivo del producto.</param>
+        /// <param name="categoriaProducto">Categoría a la que pertenece el producto.</param>
+        /// <param name="cantidadProducto">Cantidad disponible en inventario.</param>
+        /// <param name="precioProducto">Precio unitario del producto.</param>
+        /// <exception cref="ArgumentNullException">Se lanza si <paramref name="codigoProducto"/> es nulo.</exception>
+        public Producto(
+            string codigoProducto,
+            string nombreProducto,
+            string categoriaProducto,
+            int cantidadProducto,
+            double precioProducto)
         {
-
-            // Se asignan los valores mediante las propiedades (para aplicar validaciones)
-
-            CodigoProducto = codigoProducto;
-            NombreProducto = nombreProducto;
-            CategoriaProducto = categoriaProducto;
-            //EstadoProducto = estadoProducto;
-            CantidadProducto = cantidadProducto;
-            PrecioProducto = precioProducto;
+            this.codigoProducto = codigoProducto ?? throw new ArgumentNullException(nameof(codigoProducto));
+            this.nombreProducto = nombreProducto;
+            this.categoriaProducto = categoriaProducto;
+            this.cantidadProducto = cantidadProducto;
+            this.precioProducto = precioProducto;
         }
 
-
-
-
-        //Validaciones
+        // Validaciones
 
         // Propiedad para el código del producto con validación
- 
+
+        /// <summary>Gets or sets codigo del producto.</summary>
         public string CodigoProducto
         {
-            get { return _codigoProducto; }
+            get
+            {
+                return this.codigoProducto;
+            }
+
             set
             {
-                // Validación: el código no puede estar vacío o en blanco
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Debe existir un número de código...");
                 }
-                _codigoProducto = value;
+
+                this.codigoProducto = value;
             }
         }
 
         // Propiedad para el nombre del producto con validación
+
+        /// <summary>Gets or sets nombre del producto.</summary>
         public string NombreProducto
         {
-            get { return _nombreProducto; }
+            get
+            {
+                return this.nombreProducto;
+            }
+
             set
             {
-                // Validación: el nombre no puede estar vacío
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "El nombre del producto no puede estar vacío.");
                 }
-                _nombreProducto = value;
+
+                this.nombreProducto = value;
             }
         }
 
         // Propiedad para la categoría del producto (sin validación)
+
+        /// <summary>Gets or sets nombre del producto.</summary>
         public string CategoriaProducto
         {
-            get { return _categoriaProducto; }
+            get
+            {
+                return this.categoriaProducto;
+            }
 
             set
             {
@@ -75,56 +102,51 @@ namespace Inventario
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "La categoría del producto no puede estar vacía.");
                 }
-                _categoriaProducto = value;
+
+                this.categoriaProducto = value;
             }
-
-      
-
         }
-
-        // Propiedad para el estado del producto (activo o inactivo)
-       /* public bool EstadoProducto
-        {
-            get { return _estadoProducto; }
-            set { _estadoProducto = value; }
-        }
-       */
 
         // Propiedad para la cantidad del producto con validación
+
+        /// <summary>Gets or sets nombre del producto.</summary>
         public int CantidadProducto
         {
-            get { return _cantidadProducto; }
+            get
+            {
+                return this.cantidadProducto;
+            }
+
             set
             {
-                // Validación: la cantidad debe ser mayor que cero
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "La cantidad debe ser mayor que cero.");
                 }
-                _cantidadProducto = value;
+
+                this.cantidadProducto = value;
             }
         }
 
         // Propiedad para el precio del producto con validación
+
+        /// <summary>Gets or sets nombre del producto.</summary>
         public double PrecioProducto
         {
-            get { return _precioProducto; }
+            get
+            {
+                return this.precioProducto;
+            }
+
             set
             {
-                // Validación: el precio debe ser mayor que cero
                 if (value <= 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "El precio debe ser mayor que cero.");
                 }
-                _precioProducto = value;
+
+                this.precioProducto = value;
             }
         }
     }
-        
-}//Se agrego los getters y setters de los atributos 
-
-
-
-
-
-
+}// Se agrego los getters y setters de los atributos

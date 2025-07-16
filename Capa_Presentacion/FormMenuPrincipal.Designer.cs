@@ -34,7 +34,7 @@
             btnEInventario = new Button();
             btnCerrarSesion = new Button();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
+            lblEntrada = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             btnGProductos.TabIndex = 0;
             btnGProductos.Text = "Gestionar Productos";
             btnGProductos.UseVisualStyleBackColor = true;
-            btnGProductos.Click += btnGProductos_Click;
+            btnGProductos.Click += BtnGProductos_Click;
             // 
             // btnGVentas
             // 
@@ -58,7 +58,7 @@
             btnGVentas.TabIndex = 1;
             btnGVentas.Text = "Gestionar Ventas";
             btnGVentas.UseVisualStyleBackColor = true;
-            btnGVentas.Click += btnGVentas_Click;
+            btnGVentas.Click += BtnGVentas_Click;
             // 
             // btnEInventario
             // 
@@ -69,7 +69,7 @@
             btnEInventario.TabIndex = 2;
             btnEInventario.Text = "Estado Inventario";
             btnEInventario.UseVisualStyleBackColor = true;
-            btnEInventario.Click += btnEInventario_Click;
+            btnEInventario.Click += BtnEInventario_Click;
             // 
             // btnCerrarSesion
             // 
@@ -82,40 +82,41 @@
             btnCerrarSesion.TabIndex = 3;
             btnCerrarSesion.Text = "Cerrar Sesion";
             btnCerrarSesion.UseVisualStyleBackColor = false;
-            btnCerrarSesion.Click += btnCerrarSesion_Click_1;
+            btnCerrarSesion.Click += BtnCerrarSesion_Click_1;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(305, 56);
+            pictureBox1.Location = new Point(302, 82);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(445, 257);
+            pictureBox1.Size = new Size(435, 246);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // label1
+            // lblEntrada
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Britannic Bold", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(393, 327);
-            label1.Name = "label1";
-            label1.Size = new Size(296, 27);
-            label1.TabIndex = 5;
-            label1.Text = "\"ORGANIZANDO AL MUNDO\"";
+            lblEntrada.AutoSize = true;
+            lblEntrada.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEntrada.Location = new Point(18, 16);
+            lblEntrada.Name = "lblEntrada";
+            lblEntrada.Size = new Size(0, 17);
+            lblEntrada.TabIndex = 5;
             // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(776, 430);
-            Controls.Add(label1);
+            Controls.Add(lblEntrada);
             Controls.Add(pictureBox1);
             Controls.Add(btnCerrarSesion);
             Controls.Add(btnEInventario);
             Controls.Add(btnGVentas);
             Controls.Add(btnGProductos);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMenuPrincipal";
-            Text = "FormMenuPrincipal";
+            Text = "Menu Principal";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -128,6 +129,6 @@
         private Button btnEInventario;
         private Button btnCerrarSesion;
         private PictureBox pictureBox1;
-        private Label label1;
+        private Label lblEntrada;
     }
 }

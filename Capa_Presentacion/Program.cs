@@ -1,17 +1,25 @@
+// <copyright file="Program.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace Capa_Presentacion
 {
+    using System;
+    using System.Windows.Forms;
+
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new FormInicio());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Mostrar primero el FormLogin como formulario principal
+            Application.Run(new FormMainHost());
         }
     }
 }

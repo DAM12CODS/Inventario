@@ -1,53 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿// <copyright file="FormMenuPrincipal.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Capa_Presentacion
 {
+    using System;
+    using System.Windows.Forms;
+    using Capa_Entidad;
+
+    /// <summary>
+    /// Representa el formulario de gestion de venta.
+    /// Muestra el área de selección de opciones de acciones respecto a productos o ventas.
+    /// </summary>
     public partial class FormMenuPrincipal : Form
     {
-        private FormLogin formAnterior;
 
-        // Constructor que recibe el login como referencia
-        public FormMenuPrincipal(FormLogin anterior)
+        private bool confirmandoCierre = false;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormMenuPrincipal"/> class.
+        /// </summary>
+        
+
+        public FormMenuPrincipal()
         {
-            InitializeComponent();
-            this.formAnterior = anterior;
+            this.InitializeComponent();
+            this.FormClosing += FormX_FormClosing; // reemplaza "X" por el nombre del formulario
+            
+            
         }
 
-        private void btnCerrarSesion_Click_1(object sender, EventArgs e)
+        private void FormX_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Close();              // Cierra el menú
-            formAnterior.Show();
+            if (!this.confirmandoCierre && e.CloseReason == CloseReason.UserClosing)
+            {
+                this.confirmandoCierre = true;
+
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea salir?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    this.confirmandoCierre = false;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
 
-        private void btnGProductos_Click(object sender, EventArgs e)
+        private void BtnCerrarSesion_Click_1(object sender, EventArgs e)
         {
-            FormGestionProductos gestion = new FormGestionProductos(this); 
+            this.Hide(); // Cierra el menú principal
+            FormLogin login = new FormLogin(); // Carga login desde cero
+            login.Show();
+        }
+
+        private void BtnGProductos_Click(object sender, EventArgs e)
+        {
+            FormGestionProductos gestion = new FormGestionProductos();
             gestion.Show();
-            this.Hide(); // Oculta el menú principal
-
+            this.Hide(); // Cierra el menú principal
         }
 
-        private void btnGVentas_Click(object sender, EventArgs e)
+        private void BtnGVentas_Click(object sender, EventArgs e)
         {
-            FormGestionVentas venta = new FormGestionVentas(this);
+            FormGestionVentas venta = new FormGestionVentas();
             venta.Show();
-            this.Hide(); // Oculta el menú principal
+            this.Hide(); // Cierra el menú principal
         }
 
-        private void btnEInventario_Click(object sender, EventArgs e)
+        private void BtnEInventario_Click(object sender, EventArgs e)
         {
-            FormEstadoInventario estadoInventario = new FormEstadoInventario(this);
+            FormEstadoInventario estadoInventario = new FormEstadoInventario();
             estadoInventario.Show();
-            this.Hide(); // Oculta el menú principal
+            this.Hide(); // Cierra el menú principal
         }
     }
 }
-

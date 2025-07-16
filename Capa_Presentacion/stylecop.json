@@ -1,0 +1,34 @@
+﻿{
+    "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+    "settings": {
+        "documentationRules": {
+            "companyName": "MiEmpresa",
+            "documentExposedElements": true,
+            "documentPrivateElements": false,
+            "xmlHeader": false
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "outsideNamespace",
+            "elementOrder": [
+                "kind",
+                "accessibility",
+                "constant",
+                "static",
+                "readonly"
+            ]
+        },
+        "namingRules": {
+            "allowCommonHungarianPrefixes": false
+        },
+        "layoutRules": {
+            "newlineAtEndOfFile": "require",
+            "allowConsecutiveUsings": false
+        },
+        "indentation": {
+            "useTabs": false,
+            "indentationSize": 4
+        }
+    }
+}
+
+

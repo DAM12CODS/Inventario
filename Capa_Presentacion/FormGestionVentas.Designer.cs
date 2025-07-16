@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionVentas));
             btnVolver = new Button();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             cmbProductosVenta = new ComboBox();
@@ -38,7 +37,6 @@
             btnAgregarProducto = new Button();
             btnRegistrarVenta = new Button();
             label4 = new Label();
-            label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             cmbEliminarVenta = new ComboBox();
@@ -61,16 +59,44 @@
             label9 = new Label();
             label10 = new Label();
             pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
+            groupBox1 = new GroupBox();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            groupBox2 = new GroupBox();
+            label15 = new Label();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            lblStockDisponible = new Label();
+            lblPrecioProducto = new Label();
+            lblCategoriaProducto = new Label();
+            lblNombreProducto = new Label();
+            lblCodigoProducto = new Label();
+            tabPage2 = new TabPage();
+            label5 = new Label();
+            groupBox3 = new GroupBox();
+            dataGridView3 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            tabPage3 = new TabPage();
+            groupBox4 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            groupBox1.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            tabPage2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            tabPage3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // btnVolver
@@ -78,77 +104,67 @@
             btnVolver.BackColor = Color.Red;
             btnVolver.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = SystemColors.ControlLight;
-            btnVolver.Location = new Point(817, 16);
+            btnVolver.Location = new Point(967, 16);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(80, 27);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
-            btnVolver.Click += btnVolver_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Britannic Bold", 12F);
-            label1.Location = new Point(44, 79);
-            label1.Name = "label1";
-            label1.Size = new Size(121, 17);
-            label1.TabIndex = 1;
-            label1.Text = "Registar Venta: ";
+            btnVolver.Click += BtnVolver_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 128);
+            label2.Location = new Point(19, 51);
             label2.Name = "label2";
-            label2.Size = new Size(62, 15);
+            label2.Size = new Size(84, 17);
             label2.TabIndex = 2;
             label2.Text = "Producto: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 154);
+            label3.Location = new Point(19, 77);
             label3.Name = "label3";
-            label3.Size = new Size(61, 15);
+            label3.Size = new Size(80, 17);
             label3.TabIndex = 3;
             label3.Text = "Cantidad: ";
             // 
             // cmbProductosVenta
             // 
             cmbProductosVenta.FormattingEnabled = true;
-            cmbProductosVenta.Location = new Point(103, 120);
+            cmbProductosVenta.Location = new Point(109, 43);
             cmbProductosVenta.Name = "cmbProductosVenta";
-            cmbProductosVenta.Size = new Size(121, 23);
+            cmbProductosVenta.Size = new Size(121, 25);
             cmbProductosVenta.TabIndex = 4;
-            cmbProductosVenta.SelectedIndexChanged += cmbProductosVenta_SelectedIndexChanged;
+            cmbProductosVenta.SelectedIndexChanged += CmbProductosVenta_SelectedIndexChanged;
             // 
             // txtCantidadProducto
             // 
-            txtCantidadProducto.Location = new Point(103, 149);
+            txtCantidadProducto.Location = new Point(109, 72);
             txtCantidadProducto.Name = "txtCantidadProducto";
-            txtCantidadProducto.Size = new Size(121, 23);
+            txtCantidadProducto.Size = new Size(121, 25);
             txtCantidadProducto.TabIndex = 5;
             // 
             // btnAgregarProducto
             // 
-            btnAgregarProducto.Location = new Point(70, 178);
+            btnAgregarProducto.Location = new Point(36, 103);
             btnAgregarProducto.Name = "btnAgregarProducto";
-            btnAgregarProducto.Size = new Size(119, 23);
+            btnAgregarProducto.Size = new Size(169, 26);
             btnAgregarProducto.TabIndex = 6;
             btnAgregarProducto.Text = "Agregar Producto";
             btnAgregarProducto.UseVisualStyleBackColor = true;
-            btnAgregarProducto.Click += btnAgregarProducto_Click;
+            btnAgregarProducto.Click += BtnAgregarProducto_Click;
             // 
             // btnRegistrarVenta
             // 
-            btnRegistrarVenta.Location = new Point(285, 146);
+            btnRegistrarVenta.Location = new Point(270, 60);
             btnRegistrarVenta.Name = "btnRegistrarVenta";
-            btnRegistrarVenta.Size = new Size(105, 23);
+            btnRegistrarVenta.Size = new Size(127, 37);
             btnRegistrarVenta.TabIndex = 7;
             btnRegistrarVenta.Text = "Registrar Venta";
             btnRegistrarVenta.UseVisualStyleBackColor = true;
-            btnRegistrarVenta.Click += btnRegistrarVenta_Click;
+            btnRegistrarVenta.Click += BtnRegistrarVenta_Click;
             // 
             // label4
             // 
@@ -160,82 +176,72 @@
             label4.TabIndex = 8;
             label4.Text = "Eliminar Venta: ";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Britannic Bold", 12F);
-            label5.Location = new Point(34, 380);
-            label5.Name = "label5";
-            label5.Size = new Size(180, 17);
-            label5.TabIndex = 9;
-            label5.Text = "Generar Reporte Venta: ";
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(34, 261);
+            label6.Location = new Point(26, 32);
             label6.Name = "label6";
-            label6.Size = new Size(105, 15);
+            label6.Size = new Size(144, 17);
             label6.TabIndex = 10;
             label6.Text = "Seleccionar Venta: ";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(51, 413);
+            label7.Location = new Point(22, 30);
             label7.Name = "label7";
-            label7.Size = new Size(98, 15);
+            label7.Size = new Size(132, 17);
             label7.TabIndex = 11;
             label7.Text = "Seleccione Venta:";
             // 
             // cmbEliminarVenta
             // 
             cmbEliminarVenta.FormattingEnabled = true;
-            cmbEliminarVenta.Location = new Point(51, 289);
+            cmbEliminarVenta.Location = new Point(41, 50);
             cmbEliminarVenta.Name = "cmbEliminarVenta";
-            cmbEliminarVenta.Size = new Size(121, 23);
+            cmbEliminarVenta.Size = new Size(121, 25);
             cmbEliminarVenta.TabIndex = 12;
-            cmbEliminarVenta.SelectedIndexChanged += cmbEliminarVenta_SelectedIndexChanged;
+            cmbEliminarVenta.SelectedIndexChanged += CmbEliminarVenta_SelectedIndexChanged;
             // 
             // cmbVentaReporte
             // 
             cmbVentaReporte.FormattingEnabled = true;
-            cmbVentaReporte.Location = new Point(70, 443);
+            cmbVentaReporte.Location = new Point(41, 54);
             cmbVentaReporte.Name = "cmbVentaReporte";
-            cmbVentaReporte.Size = new Size(121, 23);
+            cmbVentaReporte.Size = new Size(121, 25);
             cmbVentaReporte.TabIndex = 13;
-            cmbVentaReporte.SelectedIndexChanged += cmbVentaReporte_SelectedIndexChanged;
+            cmbVentaReporte.SelectedIndexChanged += CmbVentaReporte_SelectedIndexChanged;
             // 
             // btnEliminarVenta
             // 
-            btnEliminarVenta.Location = new Point(285, 289);
+            btnEliminarVenta.Location = new Point(251, 32);
             btnEliminarVenta.Name = "btnEliminarVenta";
-            btnEliminarVenta.Size = new Size(105, 23);
+            btnEliminarVenta.Size = new Size(148, 42);
             btnEliminarVenta.TabIndex = 14;
             btnEliminarVenta.Text = "Eliminar venta";
             btnEliminarVenta.UseVisualStyleBackColor = true;
-            btnEliminarVenta.Click += btnEliminarVenta_Click;
+            btnEliminarVenta.Click += BtnEliminarVenta_Click;
             // 
             // btnGenerarReporte
             // 
-            btnGenerarReporte.Location = new Point(285, 442);
+            btnGenerarReporte.Location = new Point(230, 30);
             btnGenerarReporte.Name = "btnGenerarReporte";
-            btnGenerarReporte.Size = new Size(105, 23);
+            btnGenerarReporte.Size = new Size(156, 41);
             btnGenerarReporte.TabIndex = 15;
             btnGenerarReporte.Text = "Generar Reporte";
             btnGenerarReporte.UseVisualStyleBackColor = true;
-            btnGenerarReporte.Click += btnGenerarReporte_Click;
+            btnGenerarReporte.Click += BtnGenerarReporte_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Categoria, PrecioUnitario });
-            dataGridView1.Location = new Point(463, 99);
+            dataGridView1.Location = new Point(554, 31);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(443, 135);
             dataGridView1.TabIndex = 16;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             // 
             // Nombre
             // 
@@ -262,11 +268,11 @@
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { IdVenta, Productos, Cantidad, PrecioUnitarioVenta, PrecioTotal });
-            dataGridView2.Location = new Point(463, 331);
+            dataGridView2.Location = new Point(465, 35);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(443, 122);
+            dataGridView2.Size = new Size(536, 182);
             dataGridView2.TabIndex = 17;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            dataGridView2.CellContentClick += DataGridView2_CellContentClick;
             // 
             // IdVenta
             // 
@@ -306,21 +312,23 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Britannic Bold", 12F);
-            label8.Location = new Point(466, 75);
+            label8.Location = new Point(557, 7);
             label8.Name = "label8";
-            label8.Size = new Size(136, 17);
+            label8.Size = new Size(230, 17);
             label8.TabIndex = 19;
-            label8.Text = "Productos Venta: ";
+            label8.Text = "Productos Agregados a Venta: ";
+            label8.Click += Label8_Click;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Britannic Bold", 12F);
-            label9.Location = new Point(465, 305);
+            label9.Location = new Point(465, 15);
             label9.Name = "label9";
             label9.Size = new Size(142, 17);
             label9.TabIndex = 20;
             label9.Text = "Ventas Existentes: ";
+            label9.Click += Label9_Click;
             // 
             // label10
             // 
@@ -343,73 +351,289 @@
             pictureBox2.TabIndex = 18;
             pictureBox2.TabStop = false;
             // 
-            // pictureBox3
+            // groupBox1
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(20, 111);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(400, 104);
-            pictureBox3.TabIndex = 31;
-            pictureBox3.TabStop = false;
+            groupBox1.BackColor = Color.FromArgb(224, 224, 224);
+            groupBox1.Controls.Add(txtCantidadProducto);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(cmbProductosVenta);
+            groupBox1.Controls.Add(btnAgregarProducto);
+            groupBox1.Controls.Add(btnRegistrarVenta);
+            groupBox1.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(10, 20);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(432, 146);
+            groupBox1.TabIndex = 32;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Registro de Venta: ";
             // 
-            // pictureBox4
+            // tabControl1
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(20, 252);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(400, 104);
-            pictureBox4.TabIndex = 31;
-            pictureBox4.TabStop = false;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Font = new Font("Britannic Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabControl1.Location = new Point(20, 64);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1046, 430);
+            tabControl1.TabIndex = 33;
             // 
-            // pictureBox5
+            // tabPage1
             // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(20, 400);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(400, 104);
-            pictureBox5.TabIndex = 31;
-            pictureBox5.TabStop = false;
+            tabPage1.Controls.Add(groupBox2);
+            tabPage1.Controls.Add(groupBox1);
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Controls.Add(label8);
+            tabPage1.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabPage1.Location = new Point(4, 23);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1038, 403);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Regitro Venta";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            groupBox2.BackColor = Color.FromArgb(224, 224, 224);
+            groupBox2.Controls.Add(label15);
+            groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(label13);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(lblStockDisponible);
+            groupBox2.Controls.Add(lblPrecioProducto);
+            groupBox2.Controls.Add(lblCategoriaProducto);
+            groupBox2.Controls.Add(lblNombreProducto);
+            groupBox2.Controls.Add(lblCodigoProducto);
+            groupBox2.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox2.Location = new Point(10, 186);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(428, 192);
+            groupBox2.TabIndex = 33;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Informacion del Producto";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(10, 158);
+            label15.Name = "label15";
+            label15.Size = new Size(123, 17);
+            label15.TabIndex = 9;
+            label15.Text = "Stock Producto:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(10, 126);
+            label14.Name = "label14";
+            label14.Size = new Size(130, 17);
+            label14.TabIndex = 8;
+            label14.Text = "Precio Producto:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(10, 95);
+            label13.Name = "label13";
+            label13.Size = new Size(152, 17);
+            label13.TabIndex = 7;
+            label13.Text = "Categoria Producto:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(10, 66);
+            label12.Name = "label12";
+            label12.Size = new Size(140, 17);
+            label12.TabIndex = 6;
+            label12.Text = "Nombre Producto:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(10, 33);
+            label11.Name = "label11";
+            label11.Size = new Size(134, 17);
+            label11.TabIndex = 5;
+            label11.Text = "Codigo Producto:";
+            // 
+            // lblStockDisponible
+            // 
+            lblStockDisponible.AutoSize = true;
+            lblStockDisponible.Location = new Point(175, 159);
+            lblStockDisponible.Name = "lblStockDisponible";
+            lblStockDisponible.Size = new Size(0, 17);
+            lblStockDisponible.TabIndex = 4;
+            // 
+            // lblPrecioProducto
+            // 
+            lblPrecioProducto.AutoSize = true;
+            lblPrecioProducto.Location = new Point(175, 129);
+            lblPrecioProducto.Name = "lblPrecioProducto";
+            lblPrecioProducto.Size = new Size(0, 17);
+            lblPrecioProducto.TabIndex = 3;
+            // 
+            // lblCategoriaProducto
+            // 
+            lblCategoriaProducto.AutoSize = true;
+            lblCategoriaProducto.Location = new Point(175, 99);
+            lblCategoriaProducto.Name = "lblCategoriaProducto";
+            lblCategoriaProducto.Size = new Size(0, 17);
+            lblCategoriaProducto.TabIndex = 2;
+            // 
+            // lblNombreProducto
+            // 
+            lblNombreProducto.AutoSize = true;
+            lblNombreProducto.Location = new Point(175, 69);
+            lblNombreProducto.Name = "lblNombreProducto";
+            lblNombreProducto.Size = new Size(0, 17);
+            lblNombreProducto.TabIndex = 1;
+            // 
+            // lblCodigoProducto
+            // 
+            lblCodigoProducto.AutoSize = true;
+            lblCodigoProducto.Location = new Point(175, 39);
+            lblCodigoProducto.Name = "lblCodigoProducto";
+            lblCodigoProducto.Size = new Size(0, 17);
+            lblCodigoProducto.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(label5);
+            tabPage2.Controls.Add(groupBox3);
+            tabPage2.Controls.Add(dataGridView3);
+            tabPage2.Location = new Point(4, 23);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1038, 403);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Eliminar Venta";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(480, 24);
+            label5.Name = "label5";
+            label5.Size = new Size(142, 17);
+            label5.TabIndex = 22;
+            label5.Text = "Ventas Existentes: ";
+            // 
+            // groupBox3
+            // 
+            groupBox3.BackColor = Color.FromArgb(224, 224, 224);
+            groupBox3.Controls.Add(btnEliminarVenta);
+            groupBox3.Controls.Add(cmbEliminarVenta);
+            groupBox3.Controls.Add(label6);
+            groupBox3.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox3.Location = new Point(32, 41);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(419, 100);
+            groupBox3.TabIndex = 21;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Eliminar Venta: ";
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.AllowUserToAddRows = false;
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
+            dataGridView3.Location = new Point(480, 41);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.Size = new Size(530, 224);
+            dataGridView3.TabIndex = 18;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "IdVenta";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Productos";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Precio Unitario";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.HeaderText = "Precio Total";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(groupBox4);
+            tabPage3.Controls.Add(label9);
+            tabPage3.Controls.Add(dataGridView2);
+            tabPage3.Location = new Point(4, 23);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(1038, 403);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Generar Reporte Venta";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            groupBox4.BackColor = Color.FromArgb(224, 224, 224);
+            groupBox4.Controls.Add(btnGenerarReporte);
+            groupBox4.Controls.Add(cmbVentaReporte);
+            groupBox4.Controls.Add(label7);
+            groupBox4.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox4.Location = new Point(20, 35);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(421, 107);
+            groupBox4.TabIndex = 21;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Generar Reporte Venta: ";
             // 
             // FormGestionVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(918, 547);
+            ClientSize = new Size(1086, 514);
+            Controls.Add(tabControl1);
             Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnGenerarReporte);
-            Controls.Add(btnEliminarVenta);
-            Controls.Add(cmbVentaReporte);
-            Controls.Add(cmbEliminarVenta);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(btnRegistrarVenta);
-            Controls.Add(btnAgregarProducto);
-            Controls.Add(txtCantidadProducto);
-            Controls.Add(cmbProductosVenta);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(btnVolver);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox3);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormGestionVentas";
-            Text = "FormGestionVentas";
+            Text = "Gestion Ventas";
+            Load += FormGestionVentas_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -417,7 +641,6 @@
         #endregion
 
         private Button btnVolver;
-        private Label label1;
         private Label label2;
         private Label label3;
         private ComboBox cmbProductosVenta;
@@ -425,7 +648,6 @@
         private Button btnAgregarProducto;
         private Button btnRegistrarVenta;
         private Label label4;
-        private Label label5;
         private Label label6;
         private Label label7;
         private ComboBox cmbEliminarVenta;
@@ -448,8 +670,30 @@
         private Label label9;
         private Label label10;
         private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
+        private GroupBox groupBox1;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private GroupBox groupBox2;
+        private DataGridView dataGridView3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Label lblStockDisponible;
+        private Label lblPrecioProducto;
+        private Label lblCategoriaProducto;
+        private Label lblNombreProducto;
+        private Label lblCodigoProducto;
+        private Label label15;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private GroupBox groupBox3;
+        private GroupBox groupBox4;
+        private Label label5;
     }
 }

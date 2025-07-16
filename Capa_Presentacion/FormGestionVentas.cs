@@ -1,96 +1,136 @@
-﻿using Capa_Entidad;
-using CapaDatos;
-using Datos;
-using Inventario;
-using CapaNegocios; 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+﻿// <copyright file="FormGestionVentas.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Capa_Presentacion
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Capa_Entidad;
+    using CapaDatos;
+    using CapaNegocios;
+    using Datos;
+    using Inventario;
+
+    /// <summary>
+    /// Representa el formulario de gestion de venta.
+    /// Muestra el area de generacion de venta, reportes y elimacion de la misma ademaas permite volver al menú principal.
+    /// </summary>
     public partial class FormGestionVentas : Form
     {
         // Variables de clase
-        private FormMenuPrincipal formAnterior;
         private List<Venta> ventas = new List<Venta>();
         private List<Producto> productosDisponibles = new List<Producto>();
         private List<DetalleVenta> detallesTemporales = new List<DetalleVenta>();
         private GestionVentas gestionVentas = new GestionVentas("ventas.csv", "detalles_ventas.csv");
+        private bool confirmandoCierre = false;
         private GestionProducto gestionProducto = new GestionProducto();
 
         private string productosCSV = "productos.csv";
         private string encabezado = "Codigo;Nombre;Categoria;Cantidad;Precio";
-        public FormGestionVentas(FormMenuPrincipal anterior)
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormGestionVentas"/> class.
+        /// </summary>
+        public FormGestionVentas()
         {
             InitializeComponent();
-            this.formAnterior = anterior;
-            ConfigurarInterfaz();
+            this.FormClosing += FormX_FormClosing; // reemplaza "X" por el nombre del formulario
+            this.ConfigurarInterfaz();
 
-            productosDisponibles.Clear();
-            gestionProducto.CargarProductos(productosCSV, encabezado, productosDisponibles);
+            this.productosDisponibles.Clear();
+            this.gestionProducto.CargarProductos(this.productosCSV, this.encabezado, this.productosDisponibles);
 
-            cmbProductosVenta.DataSource = productosDisponibles;
-            cmbProductosVenta.DisplayMember = "NombreProducto";
-            cmbProductosVenta.ValueMember = "CodigoProducto";
+            this.cmbProductosVenta.DataSource = this.productosDisponibles;
+            this.cmbProductosVenta.DisplayMember = "NombreProducto";
+            this.cmbProductosVenta.ValueMember = "CodigoProducto";
+
         }
 
+        private void FormX_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.confirmandoCierre && e.CloseReason == CloseReason.UserClosing)
+            {
+                this.confirmandoCierre = true;
+
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea salir?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    this.confirmandoCierre = false;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+        }
 
 
         private void ConfigurarInterfaz()
         {
             // Establecer títulos y etiquetas según el diseño
-            label1.Text = "Registrar Venta:";
-            label4.Text = "Eliminar Venta:";
-            label5.Text = "Generar Reporte Venta:";
-            label8.Text = "Productos Venta:";
-            label9.Text = "Ventas Existentes:";
+            this.label4.Text = "Eliminar Venta:";
+            this.label8.Text = "Productos Venta:";
+            this.label9.Text = "Ventas Existentes:";
 
             // Configurar DataGridViews
-            ConfigurarDataGridProductos();
-            ConfigurarDataGridVentas();
+            this.ConfigurarDataGridProductos();
+            this.ConfigurarDataGridVentas();
         }
 
         private void ConfigurarDataGridProductos()
         {
-            dataGridView1.AllowUserToAddRows = false; 
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Nombre", "Nombre");
-            dataGridView1.Columns.Add("Codigo", "Código");
-            dataGridView1.Columns.Add("Categoria", "Categoría");
-            dataGridView1.Columns.Add("PrecioUnitario", "Precio Unitario");
-            dataGridView1.Columns.Add("Cantidad", "Cantidad");
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.Columns.Clear();
+            this.dataGridView1.Columns.Add("Nombre", "Nombre");
+            this.dataGridView1.Columns.Add("Codigo", "Código");
+            this.dataGridView1.Columns.Add("Categoria", "Categoría");
+            this.dataGridView1.Columns.Add("PrecioUnitario", "Precio Unitario");
+            this.dataGridView1.Columns.Add("Cantidad", "Cantidad");
         }
-
 
         private void ConfigurarDataGridVentas()
         {
-            dataGridView2.AllowUserToAddRows = false; 
-            dataGridView2.Columns.Clear();
-            dataGridView2.Columns.Add("IdVenta", "IdVenta");
-            dataGridView2.Columns.Add("Productos", "Productos");
-            dataGridView2.Columns.Add("Cantidad", "Cantidad");
-            dataGridView2.Columns.Add("PrecioTotal", "Precio Total");
-        }
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.Columns.Clear();
+            this.dataGridView2.Columns.Add("IdVenta", "IdVenta");
+            this.dataGridView2.Columns.Add("Productos", "Productos");
+            this.dataGridView2.Columns.Add("Cantidad", "Cantidad");
+            this.dataGridView2.Columns.Add("PrecioTotal", "Precio Total");
 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.Columns.Clear();
+            this.dataGridView3.Columns.Add("IdVenta", "IdVenta");
+            this.dataGridView3.Columns.Add("Productos", "Productos");
+            this.dataGridView3.Columns.Add("Cantidad", "Cantidad");
+            this.dataGridView3.Columns.Add("PrecioTotal", "Precio Total");
+        }
 
         private void FormGestionVentas_Load(object sender, EventArgs e)
         {
-            CargarDatosIniciales();
+            this.CargarDatosIniciales();
         }
 
         private void CargarDatosIniciales()
         {
             try
             {
-                productosDisponibles.Clear(); // Limpia antes de cargar
-                gestionProducto.CargarProductos(productosCSV, encabezado, productosDisponibles);
+                this.productosDisponibles.Clear(); // Limpia antes de cargar
+                this.gestionProducto.CargarProductos(this.productosCSV, this.encabezado, this.productosDisponibles);
 
-                cmbProductosVenta.DataSource = null;
-                cmbProductosVenta.DataSource = productosDisponibles;
-                cmbProductosVenta.DisplayMember = "NombreProducto";
-                cmbProductosVenta.ValueMember = "CodigoProducto";
+                this.cmbProductosVenta.DataSource = null;
+                this.cmbProductosVenta.DataSource = this.productosDisponibles;
+                this.cmbProductosVenta.DisplayMember = "NombreProducto";
+                this.cmbProductosVenta.ValueMember = "CodigoProducto";
             }
             catch (Exception ex)
             {
@@ -98,22 +138,21 @@ namespace Capa_Presentacion
             }
         }
 
-
         private void ActualizarListaVentas()
         {
-            cmbEliminarVenta.DataSource = ventas.ToList();
-            cmbEliminarVenta.DisplayMember = "IdVenta";
-            cmbVentaReporte.DataSource = ventas.ToList();
-            cmbVentaReporte.DisplayMember = "IdVenta";
+            this.cmbEliminarVenta.DataSource = this.ventas.ToList();
+            this.cmbEliminarVenta.DisplayMember = "IdVenta";
+            this.cmbVentaReporte.DataSource = this.ventas.ToList();
+            this.cmbVentaReporte.DisplayMember = "IdVenta";
 
-            ActualizarDataGridVentas();
+            this.ActualizarDataGridVentas();
         }
 
-        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        private void BtnAgregarProducto_Click(object sender, EventArgs e)
         {
             try
             {
-                string textoCantidad = txtCantidadProducto.Text.Trim();
+                string textoCantidad = this.txtCantidadProducto.Text.Trim();
 
                 if (string.IsNullOrWhiteSpace(textoCantidad))
                 {
@@ -127,7 +166,7 @@ namespace Capa_Presentacion
                     return;
                 }
 
-                if (cmbProductosVenta.SelectedItem is not Producto producto)
+                if (this.cmbProductosVenta.SelectedItem is not Producto producto)
                 {
                     MessageBox.Show("Seleccione un producto válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -139,7 +178,7 @@ namespace Capa_Presentacion
                     return;
                 }
 
-                if (detallesTemporales.Any(d => d.Producto.CodigoProducto == producto.CodigoProducto))
+                if (this.detallesTemporales.Any(d => d.Producto.CodigoProducto == producto.CodigoProducto))
                 {
                     MessageBox.Show("Este producto ya fue agregado a la venta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -147,17 +186,16 @@ namespace Capa_Presentacion
 
                 // Crear detalle y agregarlo a la lista y al DataGridView
                 var detalle = new DetalleVenta(producto, cantidad);
-                detallesTemporales.Add(detalle);
+                this.detallesTemporales.Add(detalle);
 
-                dataGridView1.Rows.Add(
+                this.dataGridView1.Rows.Add(
                     producto.NombreProducto,
                     producto.CodigoProducto,
                     producto.CategoriaProducto,
                     producto.PrecioProducto.ToString("C"),
-                    cantidad
-                );
+                    cantidad);
 
-                txtCantidadProducto.Clear();
+                this.txtCantidadProducto.Clear();
             }
             catch (ArgumentException ex)
             {
@@ -169,22 +207,20 @@ namespace Capa_Presentacion
             }
         }
 
-
-        private void btnRegistrarVenta_Click(object sender, EventArgs e)
+        private void BtnRegistrarVenta_Click(object sender, EventArgs e)
         {
-            if (detallesTemporales.Count == 0)
+            if (this.detallesTemporales.Count == 0)
             {
                 MessageBox.Show("Debe agregar al menos un producto a la venta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-           
 
             try
             {
-                string idVenta = "V" + (ventas.Count + 1).ToString("D3");
+                string idVenta = "V" + (this.ventas.Count + 1).ToString("D3");
                 var nuevaVenta = new Venta(idVenta, DateTime.Now);
 
-                foreach (var detalle in detallesTemporales)
+                foreach (var detalle in this.detallesTemporales)
                 {
                     if (detalle.Cantidad <= 0)
                     {
@@ -195,21 +231,19 @@ namespace Capa_Presentacion
                     nuevaVenta.AgregarDetalle(detalle);
                 }
 
-
                 VentaNegocios negocio = new VentaNegocios();
-                negocio.RegistrarVenta(nuevaVenta, productosCSV, encabezado, productosDisponibles);
-                gestionVentas.RegistrarVenta(nuevaVenta);
+                negocio.RegistrarVenta(nuevaVenta, this.productosCSV, this.encabezado, this.productosDisponibles);
+                this.gestionVentas.RegistrarVenta(nuevaVenta);
 
-                ventas.Add(nuevaVenta);
+                this.ventas.Add(nuevaVenta);
 
                 // Actualizar interfaz
-                detallesTemporales.Clear();
-                dataGridView1.Rows.Clear();
-                ActualizarListaVentas();
+                this.detallesTemporales.Clear();
+                this.dataGridView1.Rows.Clear();
+                this.ActualizarListaVentas();
 
-                dataGridView1.Rows.Clear(); // Limpia productos agregados temporalmente
-                ActualizarListaVentas();    // Refresca ventas registradas
-            
+                this.dataGridView1.Rows.Clear(); // Limpia productos agregados temporalmente
+                this.ActualizarListaVentas();    // Refresca ventas registradas
 
                 MessageBox.Show("Venta registrada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -219,9 +253,9 @@ namespace Capa_Presentacion
             }
         }
 
-        private void btnEliminarVenta_Click(object sender, EventArgs e)
+        private void BtnEliminarVenta_Click(object sender, EventArgs e)
         {
-            if (cmbEliminarVenta.SelectedItem == null)
+            if (this.cmbEliminarVenta.SelectedItem == null)
             {
                 MessageBox.Show("Seleccione una venta para eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -229,12 +263,12 @@ namespace Capa_Presentacion
 
             try
             {
-                var venta = (Venta)cmbEliminarVenta.SelectedItem;
+                var venta = (Venta)this.cmbEliminarVenta.SelectedItem;
 
-                //  Devolver stock a productos
+                // Devolver stock a productos
                 foreach (var detalle in venta.Detalles)
                 {
-                    var producto = productosDisponibles.FirstOrDefault(p => p.CodigoProducto == detalle.Producto.CodigoProducto);
+                    var producto = this.productosDisponibles.FirstOrDefault(p => p.CodigoProducto == detalle.Producto.CodigoProducto);
                     if (producto != null)
                     {
                         producto.CantidadProducto += detalle.Cantidad; // Se devuelve el stock
@@ -242,13 +276,13 @@ namespace Capa_Presentacion
                 }
 
                 // Actualizar archivo productos.csv
-                gestionProducto.ReescribirArchivo(Path.GetTempFileName(), productosCSV, encabezado, productosDisponibles);
+                this.gestionProducto.ReescribirArchivo(Path.GetTempFileName(), this.productosCSV, this.encabezado, this.productosDisponibles);
 
                 // Eliminar venta del archivo
-                gestionVentas.EliminarVenta(venta.IdVenta, ventas);
+                this.gestionVentas.EliminarVenta(venta.IdVenta, this.ventas);
 
                 // Actualizar UI
-                ActualizarListaVentas();
+                this.ActualizarListaVentas();
 
                 MessageBox.Show("Venta eliminada y stock restaurado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -258,10 +292,9 @@ namespace Capa_Presentacion
             }
         }
 
-
-        private void btnGenerarReporte_Click(object sender, EventArgs e)
+        private void BtnGenerarReporte_Click(object sender, EventArgs e)
         {
-            if (cmbVentaReporte.SelectedItem == null)
+            if (this.cmbVentaReporte.SelectedItem == null)
             {
                 MessageBox.Show("Seleccione una venta para generar el reporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -269,16 +302,18 @@ namespace Capa_Presentacion
 
             try
             {
-                var venta = (Venta)cmbVentaReporte.SelectedItem;
-                string reporte = GenerarReporteVenta(venta);
+                var venta = (Venta)this.cmbVentaReporte.SelectedItem;
+                string reporte = this.GenerarReporteVenta(venta);
 
                 // Mostrar y guardar
-                DialogResult opcion = MessageBox.Show(reporte + "\n\n¿Desea guardar este reporte como archivo?",
-                                                      $"Reporte de Venta {venta.IdVenta}",
-                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult opcion = MessageBox.Show(
+                    reporte + "\n\n¿Desea guardar este reporte como archivo?",
+                    $"Reporte de Venta {venta.IdVenta}",
+                    MessageBoxButtons.YesNo,
+                    icon: MessageBoxIcon.Question);
                 if (opcion == DialogResult.Yes)
                 {
-                    GuardarReporteEnArchivo(reporte, venta.IdVenta);
+                    this.GuardarReporteEnArchivo(reporte, venta.IdVenta);
                 }
             }
             catch (Exception ex)
@@ -301,6 +336,7 @@ namespace Capa_Presentacion
                 MessageBox.Show($"Error al guardar reporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private string GenerarReporteVenta(Venta venta)
         {
             string reporte = $"=== REPORTE DE VENTA ===\n\n" +
@@ -322,46 +358,83 @@ namespace Capa_Presentacion
 
         private void ActualizarDataGridVentas()
         {
-            dataGridView2.Rows.Clear();
-            foreach (var venta in ventas)
+            this.dataGridView2.Rows.Clear();
+            this.dataGridView3.Rows.Clear(); // AÑADIDO
+
+            foreach (var venta in this.ventas)
             {
                 string productos = string.Join(", ", venta.Detalles.Select(d => $"{d.Producto.NombreProducto} x{d.Cantidad}"));
-                dataGridView2.Rows.Add(
+                string cantidadTotal = venta.Detalles.Sum(d => d.Cantidad).ToString();
+                string total = venta.Total.ToString("C");
+
+                // dataGridView2
+                this.dataGridView2.Rows.Add(
                     venta.IdVenta,
                     productos,
-                    venta.Detalles.Sum(d => d.Cantidad),
-                    venta.Total.ToString("C")
-                );
+                    cantidadTotal,
+                    total);
+
+                // dataGridView3
+                this.dataGridView3.Rows.Add(
+                    venta.IdVenta,
+                    productos,
+                    cantidadTotal,
+                    total);
             }
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
+        private void BtnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
-            formAnterior.Show();
+            this.Hide();
+            FormMenuPrincipal menu = new FormMenuPrincipal();
+            menu.Show();
         }
 
-        private void cmbProductosVenta_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbProductosVenta_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (this.cmbProductosVenta.SelectedItem is Producto producto)
+            {
+                this.lblCodigoProducto.Text = $"{producto.CodigoProducto}";
+                this.lblNombreProducto.Text = $"{producto.NombreProducto}";
+                this.lblCategoriaProducto.Text = $"{producto.CategoriaProducto}";
+                this.lblPrecioProducto.Text = $"{producto.PrecioProducto:C}";
+                this.lblStockDisponible.Text = $"{producto.CantidadProducto}";
+            }
+            else
+            {
+                this.lblCodigoProducto.Text = "Código:";
+                this.lblNombreProducto.Text = "Nombre:";
+                this.lblCategoriaProducto.Text = "Categoría:";
+                this.lblPrecioProducto.Text = "Precio:";
+                this.lblStockDisponible.Text = "Stock Disponible:";
+            }
         }
 
-        private void cmbEliminarVenta_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbEliminarVenta_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
-        private void cmbVentaReporte_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbVentaReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void Label9_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Label8_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void FormGestionVentas_Load_1(object sender, EventArgs e)
         {
 
         }

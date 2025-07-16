@@ -68,7 +68,7 @@
             btnSalirPrograma.TabIndex = 3;
             btnSalirPrograma.Text = "SALIR";
             btnSalirPrograma.UseVisualStyleBackColor = false;
-            btnSalirPrograma.Click += btnSalirPrograma_Click;
+            btnSalirPrograma.Click += BtnSalirPrograma_Click;
             // 
             // FormInicio
             // 
@@ -78,6 +78,7 @@
             Controls.Add(btnSalirPrograma);
             Controls.Add(pictureBox1);
             Controls.Add(Ingresar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormInicio";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
