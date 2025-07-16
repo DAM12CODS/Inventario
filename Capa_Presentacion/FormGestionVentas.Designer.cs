@@ -403,6 +403,7 @@
             Controls.Add(pictureBox3);
             Name = "FormGestionVentas";
             Text = "FormGestionVentas";
+            Load += FormGestionVentas_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

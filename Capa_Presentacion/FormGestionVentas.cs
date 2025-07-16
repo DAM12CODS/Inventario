@@ -54,7 +54,7 @@ namespace Capa_Presentacion
 
         private void ConfigurarDataGridProductos()
         {
-            dataGridView1.AllowUserToAddRows = false; 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("Nombre", "Nombre");
             dataGridView1.Columns.Add("Codigo", "Código");
@@ -66,7 +66,7 @@ namespace Capa_Presentacion
 
         private void ConfigurarDataGridVentas()
         {
-            dataGridView2.AllowUserToAddRows = false; 
+            dataGridView2.AllowUserToAddRows = false;
             dataGridView2.Columns.Clear();
             dataGridView2.Columns.Add("IdVenta", "IdVenta");
             dataGridView2.Columns.Add("Productos", "Productos");
@@ -177,7 +177,7 @@ namespace Capa_Presentacion
                 MessageBox.Show("Debe agregar al menos un producto a la venta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-           
+
 
             try
             {
@@ -209,7 +209,7 @@ namespace Capa_Presentacion
 
                 dataGridView1.Rows.Clear(); // Limpia productos agregados temporalmente
                 ActualizarListaVentas();    // Refresca ventas registradas
-            
+
 
                 MessageBox.Show("Venta registrada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -362,6 +362,11 @@ namespace Capa_Presentacion
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FormGestionVentas_Load_1(object sender, EventArgs e)
         {
 
         }

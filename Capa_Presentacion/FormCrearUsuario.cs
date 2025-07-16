@@ -16,8 +16,6 @@ namespace Capa_Presentacion
     {
 
         private static string rutaUsuarios = "usuarios.csv";
-        private FormInicio formAnterior;
-
         private static string encabezadoUsuarios = "Nombre;Apellido;Email;Password;Rol";
         private List<Usuario> usuarios = new List<Usuario>();
         private List<String> roles = new List<string> { "Administrador", "Local" };
@@ -25,6 +23,15 @@ namespace Capa_Presentacion
         public FormCrearUsuario()
         {
             InitializeComponent();
+            usuarios = gestor.CargarUsuarios(rutaUsuarios, encabezadoUsuarios);
+        }
+
+        private FormLogin formLoginAnterior;
+
+        public FormCrearUsuario(FormLogin loginForm)
+        {
+            InitializeComponent();
+            this.formLoginAnterior = loginForm;
             usuarios = gestor.CargarUsuarios(rutaUsuarios, encabezadoUsuarios);
         }
 
@@ -138,8 +145,8 @@ namespace Capa_Presentacion
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            this.Close(); // Cierra este formulario
-             formAnterior.Show(); // Muestra el menú principal nuevamente
+            this.Close();                    // Cierra FormCrearUsuario
+            formLoginAnterior.Show();
         }
     }
 }

@@ -90,10 +90,11 @@ namespace Capa_Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormCrearUsuario formCrearUsuario = new FormCrearUsuario();
+            FormCrearUsuario formCrearUsuario = new FormCrearUsuario(this);
             formCrearUsuario.Show();
             this.Hide();
         }
+
 
         private void label4_Click(object sender, EventArgs e)
         {
