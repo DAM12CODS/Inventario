@@ -40,6 +40,7 @@ namespace Capa_Presentacion
             InitializeComponent();
             this.FormClosing += FormX_FormClosing; // reemplaza "X" por el nombre del formulario
             this.ConfigurarInterfaz();
+            this.CargarDatosIniciales();
 
             this.productosDisponibles.Clear();
             this.gestionProducto.CargarProductos(this.productosCSV, this.encabezado, this.productosDisponibles);
@@ -47,6 +48,7 @@ namespace Capa_Presentacion
             this.cmbProductosVenta.DataSource = this.productosDisponibles;
             this.cmbProductosVenta.DisplayMember = "NombreProducto";
             this.cmbProductosVenta.ValueMember = "CodigoProducto";
+
 
         }
 
@@ -80,7 +82,6 @@ namespace Capa_Presentacion
             // Establecer títulos y etiquetas según el diseño
             this.label4.Text = "Eliminar Venta:";
             this.label8.Text = "Productos Venta:";
-            this.label9.Text = "Ventas Existentes:";
 
             // Configurar DataGridViews
             this.ConfigurarDataGridProductos();
@@ -100,12 +101,6 @@ namespace Capa_Presentacion
 
         private void ConfigurarDataGridVentas()
         {
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.Columns.Clear();
-            this.dataGridView2.Columns.Add("IdVenta", "IdVenta");
-            this.dataGridView2.Columns.Add("Productos", "Productos");
-            this.dataGridView2.Columns.Add("Cantidad", "Cantidad");
-            this.dataGridView2.Columns.Add("PrecioTotal", "Precio Total");
 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.Columns.Clear();
@@ -126,11 +121,13 @@ namespace Capa_Presentacion
             {
                 this.productosDisponibles.Clear(); // Limpia antes de cargar
                 this.gestionProducto.CargarProductos(this.productosCSV, this.encabezado, this.productosDisponibles);
+                this.ventas = this.gestionVentas.CargarVentas(this.productosDisponibles);
 
                 this.cmbProductosVenta.DataSource = null;
                 this.cmbProductosVenta.DataSource = this.productosDisponibles;
                 this.cmbProductosVenta.DisplayMember = "NombreProducto";
                 this.cmbProductosVenta.ValueMember = "CodigoProducto";
+                this.ActualizarListaVentas(); 
             }
             catch (Exception ex)
             {
@@ -260,7 +257,18 @@ namespace Capa_Presentacion
                 MessageBox.Show("Seleccione una venta para eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            // Confirmación del usuario antes de eliminar le venta
+            DialogResult resultado = MessageBox.Show(
+                "¿Estás seguro de eliminar la venta?",
+                "Eliminar Venta",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
+            if (resultado != DialogResult.Yes)
+            {
+                MessageBox.Show("Acción cancelada.");
+                return;
+            }
             try
             {
                 var venta = (Venta)this.cmbEliminarVenta.SelectedItem;
@@ -358,7 +366,7 @@ namespace Capa_Presentacion
 
         private void ActualizarDataGridVentas()
         {
-            this.dataGridView2.Rows.Clear();
+            
             this.dataGridView3.Rows.Clear(); // AÑADIDO
 
             foreach (var venta in this.ventas)
@@ -368,11 +376,7 @@ namespace Capa_Presentacion
                 string total = venta.Total.ToString("C");
 
                 // dataGridView2
-                this.dataGridView2.Rows.Add(
-                    venta.IdVenta,
-                    productos,
-                    cantidadTotal,
-                    total);
+               
 
                 // dataGridView3
                 this.dataGridView3.Rows.Add(

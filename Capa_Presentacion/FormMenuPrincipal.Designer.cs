@@ -40,21 +40,23 @@
             // 
             // btnGProductos
             // 
-            btnGProductos.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGProductos.Location = new Point(58, 157);
+            btnGProductos.Cursor = Cursors.SizeNESW;
+            btnGProductos.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            btnGProductos.Location = new Point(54, 134);
             btnGProductos.Name = "btnGProductos";
             btnGProductos.Size = new Size(197, 37);
             btnGProductos.TabIndex = 0;
             btnGProductos.Text = "Gestionar Productos";
+            btnGProductos.TextImageRelation = TextImageRelation.TextAboveImage;
             btnGProductos.UseVisualStyleBackColor = true;
             btnGProductos.Click += BtnGProductos_Click;
             // 
             // btnGVentas
             // 
-            btnGVentas.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGVentas.Location = new Point(77, 200);
+            btnGVentas.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            btnGVentas.Location = new Point(59, 191);
             btnGVentas.Name = "btnGVentas";
-            btnGVentas.Size = new Size(150, 37);
+            btnGVentas.Size = new Size(181, 37);
             btnGVentas.TabIndex = 1;
             btnGVentas.Text = "Gestionar Ventas";
             btnGVentas.UseVisualStyleBackColor = true;
@@ -62,10 +64,10 @@
             // 
             // btnEInventario
             // 
-            btnEInventario.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEInventario.Location = new Point(77, 244);
+            btnEInventario.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            btnEInventario.Location = new Point(59, 251);
             btnEInventario.Name = "btnEInventario";
-            btnEInventario.Size = new Size(150, 35);
+            btnEInventario.Size = new Size(181, 37);
             btnEInventario.TabIndex = 2;
             btnEInventario.Text = "Estado Inventario";
             btnEInventario.UseVisualStyleBackColor = true;
@@ -76,7 +78,7 @@
             btnCerrarSesion.BackColor = Color.Red;
             btnCerrarSesion.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCerrarSesion.ForeColor = SystemColors.ControlLight;
-            btnCerrarSesion.Location = new Point(12, 389);
+            btnCerrarSesion.Location = new Point(18, 389);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(129, 29);
             btnCerrarSesion.TabIndex = 3;
@@ -87,9 +89,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(302, 82);
+            pictureBox1.Location = new Point(345, 101);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(435, 246);
+            pictureBox1.Size = new Size(381, 212);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -114,6 +116,7 @@
             Controls.Add(btnEInventario);
             Controls.Add(btnGVentas);
             Controls.Add(btnGProductos);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMenuPrincipal";
             Text = "Menu Principal";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionVentas));
             btnVolver = new Button();
             label2 = new Label();
@@ -48,15 +49,8 @@
             Codigo = new DataGridViewTextBoxColumn();
             Categoria = new DataGridViewTextBoxColumn();
             PrecioUnitario = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            IdVenta = new DataGridViewTextBoxColumn();
-            Productos = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            PrecioUnitarioVenta = new DataGridViewTextBoxColumn();
-            PrecioTotal = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             label8 = new Label();
-            label9 = new Label();
             label10 = new Label();
             pictureBox2 = new PictureBox();
             groupBox1 = new GroupBox();
@@ -74,6 +68,7 @@
             lblNombreProducto = new Label();
             lblCodigoProducto = new Label();
             tabPage2 = new TabPage();
+            groupBox4 = new GroupBox();
             label5 = new Label();
             groupBox3 = new GroupBox();
             dataGridView3 = new DataGridView();
@@ -82,10 +77,7 @@
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            tabPage3 = new TabPage();
-            groupBox4 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
@@ -93,10 +85,9 @@
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
             tabPage2.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            tabPage3.SuspendLayout();
-            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // btnVolver
@@ -115,55 +106,65 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(19, 51);
+            label2.Font = new Font("Rockwell", 12F);
+            label2.Location = new Point(19, 43);
             label2.Name = "label2";
-            label2.Size = new Size(84, 17);
+            label2.Size = new Size(84, 19);
             label2.TabIndex = 2;
             label2.Text = "Producto: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(19, 77);
+            label3.Font = new Font("Rockwell", 12F);
+            label3.Location = new Point(19, 70);
             label3.Name = "label3";
-            label3.Size = new Size(80, 17);
+            label3.Size = new Size(86, 19);
             label3.TabIndex = 3;
             label3.Text = "Cantidad: ";
             // 
             // cmbProductosVenta
             // 
+            cmbProductosVenta.Font = new Font("Rockwell", 12F);
             cmbProductosVenta.FormattingEnabled = true;
-            cmbProductosVenta.Location = new Point(109, 43);
+            cmbProductosVenta.Location = new Point(109, 39);
             cmbProductosVenta.Name = "cmbProductosVenta";
-            cmbProductosVenta.Size = new Size(121, 25);
+            cmbProductosVenta.Size = new Size(121, 27);
             cmbProductosVenta.TabIndex = 4;
             cmbProductosVenta.SelectedIndexChanged += CmbProductosVenta_SelectedIndexChanged;
             // 
             // txtCantidadProducto
             // 
-            txtCantidadProducto.Location = new Point(109, 72);
+            txtCantidadProducto.Font = new Font("Rockwell", 12F);
+            txtCantidadProducto.Location = new Point(109, 68);
             txtCantidadProducto.Name = "txtCantidadProducto";
-            txtCantidadProducto.Size = new Size(121, 25);
+            txtCantidadProducto.Size = new Size(121, 26);
             txtCantidadProducto.TabIndex = 5;
             // 
             // btnAgregarProducto
             // 
+            btnAgregarProducto.BackColor = Color.CadetBlue;
+            btnAgregarProducto.Font = new Font("Rockwell", 12F);
+            btnAgregarProducto.ForeColor = Color.White;
             btnAgregarProducto.Location = new Point(36, 103);
             btnAgregarProducto.Name = "btnAgregarProducto";
-            btnAgregarProducto.Size = new Size(169, 26);
+            btnAgregarProducto.Size = new Size(169, 37);
             btnAgregarProducto.TabIndex = 6;
             btnAgregarProducto.Text = "Agregar Producto";
-            btnAgregarProducto.UseVisualStyleBackColor = true;
+            btnAgregarProducto.UseVisualStyleBackColor = false;
             btnAgregarProducto.Click += BtnAgregarProducto_Click;
             // 
             // btnRegistrarVenta
             // 
-            btnRegistrarVenta.Location = new Point(270, 60);
+            btnRegistrarVenta.BackColor = Color.LightSeaGreen;
+            btnRegistrarVenta.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRegistrarVenta.ForeColor = Color.FromArgb(64, 64, 64);
+            btnRegistrarVenta.Location = new Point(314, 43);
             btnRegistrarVenta.Name = "btnRegistrarVenta";
-            btnRegistrarVenta.Size = new Size(127, 37);
+            btnRegistrarVenta.Size = new Size(127, 50);
             btnRegistrarVenta.TabIndex = 7;
             btnRegistrarVenta.Text = "Registrar Venta";
-            btnRegistrarVenta.UseVisualStyleBackColor = true;
+            btnRegistrarVenta.UseVisualStyleBackColor = false;
             btnRegistrarVenta.Click += BtnRegistrarVenta_Click;
             // 
             // label4
@@ -179,57 +180,70 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Rockwell", 12F);
+            label6.ForeColor = Color.FromArgb(64, 64, 64);
             label6.Location = new Point(26, 32);
             label6.Name = "label6";
-            label6.Size = new Size(144, 17);
+            label6.Size = new Size(150, 19);
             label6.TabIndex = 10;
             label6.Text = "Seleccionar Venta: ";
             // 
             // label7
             // 
             label7.AutoSize = true;
+            label7.Font = new Font("Rockwell", 12F);
             label7.Location = new Point(22, 30);
             label7.Name = "label7";
-            label7.Size = new Size(132, 17);
+            label7.Size = new Size(139, 19);
             label7.TabIndex = 11;
             label7.Text = "Seleccione Venta:";
             // 
             // cmbEliminarVenta
             // 
+            cmbEliminarVenta.Font = new Font("Rockwell", 12F);
+            cmbEliminarVenta.ForeColor = Color.FromArgb(64, 64, 64);
             cmbEliminarVenta.FormattingEnabled = true;
             cmbEliminarVenta.Location = new Point(41, 50);
             cmbEliminarVenta.Name = "cmbEliminarVenta";
-            cmbEliminarVenta.Size = new Size(121, 25);
+            cmbEliminarVenta.Size = new Size(121, 27);
             cmbEliminarVenta.TabIndex = 12;
             cmbEliminarVenta.SelectedIndexChanged += CmbEliminarVenta_SelectedIndexChanged;
             // 
             // cmbVentaReporte
             // 
+            cmbVentaReporte.Font = new Font("Rockwell", 12F);
+            cmbVentaReporte.ForeColor = Color.FromArgb(64, 64, 64);
             cmbVentaReporte.FormattingEnabled = true;
             cmbVentaReporte.Location = new Point(41, 54);
             cmbVentaReporte.Name = "cmbVentaReporte";
-            cmbVentaReporte.Size = new Size(121, 25);
+            cmbVentaReporte.Size = new Size(121, 27);
             cmbVentaReporte.TabIndex = 13;
             cmbVentaReporte.SelectedIndexChanged += CmbVentaReporte_SelectedIndexChanged;
             // 
             // btnEliminarVenta
             // 
+            btnEliminarVenta.BackColor = Color.LightSeaGreen;
+            btnEliminarVenta.Font = new Font("Rockwell", 12F);
+            btnEliminarVenta.ForeColor = Color.FromArgb(64, 64, 64);
             btnEliminarVenta.Location = new Point(251, 32);
             btnEliminarVenta.Name = "btnEliminarVenta";
             btnEliminarVenta.Size = new Size(148, 42);
             btnEliminarVenta.TabIndex = 14;
             btnEliminarVenta.Text = "Eliminar venta";
-            btnEliminarVenta.UseVisualStyleBackColor = true;
+            btnEliminarVenta.UseVisualStyleBackColor = false;
             btnEliminarVenta.Click += BtnEliminarVenta_Click;
             // 
             // btnGenerarReporte
             // 
+            btnGenerarReporte.BackColor = Color.LightSeaGreen;
+            btnGenerarReporte.Font = new Font("Rockwell", 12F);
+            btnGenerarReporte.ForeColor = Color.FromArgb(64, 64, 64);
             btnGenerarReporte.Location = new Point(230, 30);
             btnGenerarReporte.Name = "btnGenerarReporte";
             btnGenerarReporte.Size = new Size(156, 41);
             btnGenerarReporte.TabIndex = 15;
             btnGenerarReporte.Text = "Generar Reporte";
-            btnGenerarReporte.UseVisualStyleBackColor = true;
+            btnGenerarReporte.UseVisualStyleBackColor = false;
             btnGenerarReporte.Click += BtnGenerarReporte_Click;
             // 
             // dataGridView1
@@ -237,9 +251,17 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Categoria, PrecioUnitario });
-            dataGridView1.Location = new Point(554, 31);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Onyx", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.Location = new Point(530, 31);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(443, 135);
+            dataGridView1.Size = new Size(442, 135);
             dataGridView1.TabIndex = 16;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             // 
@@ -263,42 +285,6 @@
             PrecioUnitario.HeaderText = "Precio Unitario";
             PrecioUnitario.Name = "PrecioUnitario";
             // 
-            // dataGridView2
-            // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { IdVenta, Productos, Cantidad, PrecioUnitarioVenta, PrecioTotal });
-            dataGridView2.Location = new Point(465, 35);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(536, 182);
-            dataGridView2.TabIndex = 17;
-            dataGridView2.CellContentClick += DataGridView2_CellContentClick;
-            // 
-            // IdVenta
-            // 
-            IdVenta.HeaderText = "IdVenta";
-            IdVenta.Name = "IdVenta";
-            // 
-            // Productos
-            // 
-            Productos.HeaderText = "Productos";
-            Productos.Name = "Productos";
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.Name = "Cantidad";
-            // 
-            // PrecioUnitarioVenta
-            // 
-            PrecioUnitarioVenta.HeaderText = "Precio Unitario";
-            PrecioUnitarioVenta.Name = "PrecioUnitarioVenta";
-            // 
-            // PrecioTotal
-            // 
-            PrecioTotal.HeaderText = "Precio Total";
-            PrecioTotal.Name = "PrecioTotal";
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -311,24 +297,14 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Britannic Bold", 12F);
+            label8.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.WindowFrame;
             label8.Location = new Point(557, 7);
             label8.Name = "label8";
-            label8.Size = new Size(230, 17);
+            label8.Size = new Size(241, 20);
             label8.TabIndex = 19;
             label8.Text = "Productos Agregados a Venta: ";
             label8.Click += Label8_Click;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Britannic Bold", 12F);
-            label9.Location = new Point(465, 15);
-            label9.Name = "label9";
-            label9.Size = new Size(142, 17);
-            label9.TabIndex = 20;
-            label9.Text = "Ventas Existentes: ";
-            label9.Click += Label9_Click;
             // 
             // label10
             // 
@@ -360,10 +336,11 @@
             groupBox1.Controls.Add(cmbProductosVenta);
             groupBox1.Controls.Add(btnAgregarProducto);
             groupBox1.Controls.Add(btnRegistrarVenta);
-            groupBox1.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = Color.FromArgb(64, 64, 64);
             groupBox1.Location = new Point(10, 20);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(432, 146);
+            groupBox1.Size = new Size(488, 146);
             groupBox1.TabIndex = 32;
             groupBox1.TabStop = false;
             groupBox1.Text = "Registro de Venta: ";
@@ -372,28 +349,27 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Font = new Font("Britannic Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabControl1.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(20, 64);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1046, 430);
+            tabControl1.Size = new Size(1039, 425);
             tabControl1.TabIndex = 33;
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.WhiteSmoke;
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(label8);
-            tabPage1.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabPage1.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabPage1.Location = new Point(4, 23);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1038, 403);
+            tabPage1.Size = new Size(1031, 398);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Regitro Venta";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Text = "Registrar Venta";
             // 
             // groupBox2
             // 
@@ -408,10 +384,11 @@
             groupBox2.Controls.Add(lblCategoriaProducto);
             groupBox2.Controls.Add(lblNombreProducto);
             groupBox2.Controls.Add(lblCodigoProducto);
-            groupBox2.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox2.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox2.ForeColor = Color.FromArgb(64, 64, 64);
             groupBox2.Location = new Point(10, 186);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(428, 192);
+            groupBox2.Size = new Size(488, 192);
             groupBox2.TabIndex = 33;
             groupBox2.TabStop = false;
             groupBox2.Text = "Informacion del Producto";
@@ -419,108 +396,136 @@
             // label15
             // 
             label15.AutoSize = true;
+            label15.Font = new Font("Rockwell", 12F);
             label15.Location = new Point(10, 158);
             label15.Name = "label15";
-            label15.Size = new Size(123, 17);
+            label15.Size = new Size(124, 19);
             label15.TabIndex = 9;
             label15.Text = "Stock Producto:";
             // 
             // label14
             // 
             label14.AutoSize = true;
+            label14.Font = new Font("Rockwell", 12F);
             label14.Location = new Point(10, 126);
             label14.Name = "label14";
-            label14.Size = new Size(130, 17);
+            label14.Size = new Size(130, 19);
             label14.TabIndex = 8;
             label14.Text = "Precio Producto:";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(10, 95);
+            label13.Font = new Font("Rockwell", 12F);
+            label13.Location = new Point(10, 100);
             label13.Name = "label13";
-            label13.Size = new Size(152, 17);
+            label13.Size = new Size(158, 19);
             label13.TabIndex = 7;
             label13.Text = "Categoria Producto:";
             // 
             // label12
             // 
             label12.AutoSize = true;
+            label12.Font = new Font("Rockwell", 12F);
             label12.Location = new Point(10, 66);
             label12.Name = "label12";
-            label12.Size = new Size(140, 17);
+            label12.Size = new Size(145, 19);
             label12.TabIndex = 6;
             label12.Text = "Nombre Producto:";
             // 
             // label11
             // 
             label11.AutoSize = true;
+            label11.Font = new Font("Rockwell", 12F);
             label11.Location = new Point(10, 33);
             label11.Name = "label11";
-            label11.Size = new Size(134, 17);
+            label11.Size = new Size(138, 19);
             label11.TabIndex = 5;
             label11.Text = "Codigo Producto:";
             // 
             // lblStockDisponible
             // 
             lblStockDisponible.AutoSize = true;
-            lblStockDisponible.Location = new Point(175, 159);
+            lblStockDisponible.Font = new Font("Rockwell", 12F);
+            lblStockDisponible.Location = new Point(182, 159);
             lblStockDisponible.Name = "lblStockDisponible";
-            lblStockDisponible.Size = new Size(0, 17);
+            lblStockDisponible.Size = new Size(0, 19);
             lblStockDisponible.TabIndex = 4;
             // 
             // lblPrecioProducto
             // 
             lblPrecioProducto.AutoSize = true;
-            lblPrecioProducto.Location = new Point(175, 129);
+            lblPrecioProducto.Font = new Font("Rockwell", 12F);
+            lblPrecioProducto.Location = new Point(182, 129);
             lblPrecioProducto.Name = "lblPrecioProducto";
-            lblPrecioProducto.Size = new Size(0, 17);
+            lblPrecioProducto.Size = new Size(0, 19);
             lblPrecioProducto.TabIndex = 3;
             // 
             // lblCategoriaProducto
             // 
             lblCategoriaProducto.AutoSize = true;
-            lblCategoriaProducto.Location = new Point(175, 99);
+            lblCategoriaProducto.Font = new Font("Rockwell", 12F);
+            lblCategoriaProducto.Location = new Point(182, 99);
             lblCategoriaProducto.Name = "lblCategoriaProducto";
-            lblCategoriaProducto.Size = new Size(0, 17);
+            lblCategoriaProducto.Size = new Size(0, 19);
             lblCategoriaProducto.TabIndex = 2;
             // 
             // lblNombreProducto
             // 
             lblNombreProducto.AutoSize = true;
-            lblNombreProducto.Location = new Point(175, 69);
+            lblNombreProducto.Font = new Font("Rockwell", 12F);
+            lblNombreProducto.Location = new Point(182, 69);
             lblNombreProducto.Name = "lblNombreProducto";
-            lblNombreProducto.Size = new Size(0, 17);
+            lblNombreProducto.Size = new Size(0, 19);
             lblNombreProducto.TabIndex = 1;
             // 
             // lblCodigoProducto
             // 
             lblCodigoProducto.AutoSize = true;
-            lblCodigoProducto.Location = new Point(175, 39);
+            lblCodigoProducto.Font = new Font("Rockwell", 12F);
+            lblCodigoProducto.Location = new Point(182, 39);
             lblCodigoProducto.Name = "lblCodigoProducto";
-            lblCodigoProducto.Size = new Size(0, 17);
+            lblCodigoProducto.Size = new Size(0, 19);
             lblCodigoProducto.TabIndex = 0;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(groupBox4);
             tabPage2.Controls.Add(label5);
             tabPage2.Controls.Add(groupBox3);
             tabPage2.Controls.Add(dataGridView3);
+            tabPage2.Font = new Font("Rockwell", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabPage2.Location = new Point(4, 23);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1038, 403);
+            tabPage2.Size = new Size(1031, 398);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Eliminar Venta";
+            tabPage2.Text = "Estado Venta";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            groupBox4.BackColor = Color.FromArgb(224, 224, 224);
+            groupBox4.Controls.Add(btnGenerarReporte);
+            groupBox4.Controls.Add(cmbVentaReporte);
+            groupBox4.Controls.Add(label7);
+            groupBox4.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox4.ForeColor = Color.FromArgb(64, 64, 64);
+            groupBox4.Location = new Point(30, 186);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(421, 107);
+            groupBox4.TabIndex = 21;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Generar Reporte Venta: ";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(480, 24);
+            label5.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(64, 64, 64);
+            label5.Location = new Point(480, 46);
             label5.Name = "label5";
-            label5.Size = new Size(142, 17);
+            label5.Size = new Size(150, 20);
             label5.TabIndex = 22;
             label5.Text = "Ventas Existentes: ";
             // 
@@ -530,8 +535,9 @@
             groupBox3.Controls.Add(btnEliminarVenta);
             groupBox3.Controls.Add(cmbEliminarVenta);
             groupBox3.Controls.Add(label6);
-            groupBox3.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(32, 41);
+            groupBox3.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox3.ForeColor = Color.FromArgb(64, 64, 64);
+            groupBox3.Location = new Point(32, 62);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(419, 100);
             groupBox3.TabIndex = 21;
@@ -543,7 +549,7 @@
             dataGridView3.AllowUserToAddRows = false;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridView3.Location = new Point(480, 41);
+            dataGridView3.Location = new Point(480, 69);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(530, 224);
             dataGridView3.TabIndex = 18;
@@ -573,49 +579,23 @@
             dataGridViewTextBoxColumn5.HeaderText = "Precio Total";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(groupBox4);
-            tabPage3.Controls.Add(label9);
-            tabPage3.Controls.Add(dataGridView2);
-            tabPage3.Location = new Point(4, 23);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(1038, 403);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Generar Reporte Venta";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            groupBox4.BackColor = Color.FromArgb(224, 224, 224);
-            groupBox4.Controls.Add(btnGenerarReporte);
-            groupBox4.Controls.Add(cmbVentaReporte);
-            groupBox4.Controls.Add(label7);
-            groupBox4.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox4.Location = new Point(20, 35);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(421, 107);
-            groupBox4.TabIndex = 21;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Generar Reporte Venta: ";
-            // 
             // FormGestionVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1086, 514);
+            ClientSize = new Size(1086, 501);
             Controls.Add(tabControl1);
             Controls.Add(label10);
             Controls.Add(label4);
             Controls.Add(btnVolver);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormGestionVentas";
             Text = "Gestion Ventas";
             Load += FormGestionVentas_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             groupBox1.ResumeLayout(false);
@@ -627,13 +607,11 @@
             groupBox2.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -659,22 +637,14 @@
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Categoria;
         private DataGridViewTextBoxColumn PrecioUnitario;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn IdVenta;
-        private DataGridViewTextBoxColumn Productos;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn PrecioUnitarioVenta;
-        private DataGridViewTextBoxColumn PrecioTotal;
         private PictureBox pictureBox1;
         private Label label8;
-        private Label label9;
         private Label label10;
         private PictureBox pictureBox2;
         private GroupBox groupBox1;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private TabPage tabPage3;
         private GroupBox groupBox2;
         private DataGridView dataGridView3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

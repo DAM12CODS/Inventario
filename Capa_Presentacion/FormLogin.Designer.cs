@@ -58,36 +58,38 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Britannic Bold", 12F);
+            label1.Font = new Font("Rockwell", 12F);
             label1.Location = new Point(191, 277);
             label1.Name = "label1";
-            label1.Size = new Size(69, 17);
+            label1.Size = new Size(75, 19);
             label1.TabIndex = 1;
             label1.Text = "Nombre:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Britannic Bold", 12F);
+            label2.Font = new Font("Rockwell", 12F);
             label2.Location = new Point(191, 308);
             label2.Name = "label2";
-            label2.Size = new Size(94, 17);
+            label2.Size = new Size(99, 19);
             label2.TabIndex = 2;
             label2.Text = "Contraseña:";
             // 
             // txtNombre
             // 
+            txtNombre.Font = new Font("Rockwell", 9F);
             txtNombre.Location = new Point(295, 277);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(224, 23);
+            txtNombre.Size = new Size(224, 22);
             txtNombre.TabIndex = 3;
             // 
             // txtContraseña
             // 
+            txtContraseña.Font = new Font("Rockwell", 9F);
             txtContraseña.Location = new Point(295, 307);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
-            txtContraseña.Size = new Size(224, 23);
+            txtContraseña.Size = new Size(224, 22);
             txtContraseña.TabIndex = 4;
             txtContraseña.TextChanged += TxtContraseña_TextChanged;
             txtContraseña.KeyPress += TxtContraseña_KeyPress;
@@ -108,7 +110,7 @@
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.RoyalBlue;
-            btnIngresar.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIngresar.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnIngresar.ForeColor = SystemColors.ControlLight;
             btnIngresar.Location = new Point(238, 340);
             btnIngresar.Name = "btnIngresar";
@@ -129,8 +131,9 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.Window;
-            button1.Location = new Point(537, 432);
+            button1.BackColor = Color.LightSeaGreen;
+            button1.Font = new Font("Rockwell", 9.75F);
+            button1.Location = new Point(560, 432);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(151, 34);
@@ -142,10 +145,11 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Rockwell", 9.75F);
             label3.Location = new Point(507, 406);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(206, 15);
+            label3.Size = new Size(230, 16);
             label3.TabIndex = 9;
             label3.Text = "¿Es la primera vez que usas Inventory?";
             label3.Click += Label3_Click;
@@ -165,6 +169,7 @@
             Controls.Add(txtNombre);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormLogin";
             Text = "Login";

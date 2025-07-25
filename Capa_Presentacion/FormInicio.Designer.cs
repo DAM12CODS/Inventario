@@ -38,7 +38,7 @@
             // Ingresar
             // 
             Ingresar.BackColor = Color.RoyalBlue;
-            Ingresar.Font = new Font("Britannic Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Ingresar.Font = new Font("Rockwell", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Ingresar.ForeColor = SystemColors.ButtonFace;
             Ingresar.Location = new Point(297, 317);
             Ingresar.Name = "Ingresar";
@@ -78,9 +78,10 @@
             Controls.Add(btnSalirPrograma);
             Controls.Add(pictureBox1);
             Controls.Add(Ingresar);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormInicio";
-            Text = "Form1";
+            Text = "¡Bienvenido!";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

@@ -16,8 +16,10 @@ namespace Capa_Presentacion
     {
 
         private List<Producto> productos = new List<Producto>();
-        private List<String> categorias = new List<String> { "Frutas y verduras","Carnes y embutidos", "Bebidas",
-        "Cereales y productos secos", "Detergentes y jabones","Desinfectantes","Champús y acondicionadores","Desodorantes",
+        private List<string> categorias = new List<string>
+        {
+            "Frutas y verduras","Carnes y embutidos", "Bebidas",
+            "Cereales y productos secos", "Detergentes y jabones","Desinfectantes","Champús y acondicionadores","Desodorantes","Utilies Escolares",
         };
 
         private string productosCSV = "productos.csv";
@@ -31,17 +33,15 @@ namespace Capa_Presentacion
         /// Initializes a new instance of the <see cref="FormGestionProductos"/> class.
         /// </summary>
         /// <param name="anterior">Permite volver al anterior form.</param>
-        
-
         public FormGestionProductos()
         {
-            
             this.InitializeComponent();
             this.FormClosing += FormX_FormClosing; // reemplaza "X" por el nombre del formulario
             var gestor = new GestionProducto();
             gestor.CargarProductos(this.productosCSV, this.encabezado, this.productos);
             this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = this.productos;
+
             // Lita de Categorias
             cmbCategorias.DataSource = null;
             cmbCategorias.DataSource = categorias;
@@ -140,7 +140,7 @@ namespace Capa_Presentacion
             {
                 if (codigoP.Length != 6)
                 {
-                    errores.Add("El código del producto debe tener exactamente 6 caracteres.");
+                    errores.Add("El código del producto debe tener exactamente 6 caracteres entre letras o numeros.");
                 }
 
                 if (this.productos.Any(p => p.CodigoProducto.Equals(codigoP, StringComparison.OrdinalIgnoreCase)))
@@ -404,6 +404,11 @@ namespace Capa_Presentacion
         private void txtCodigo_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            BtnEliminar_Click(sender, e);
         }
     }
 }

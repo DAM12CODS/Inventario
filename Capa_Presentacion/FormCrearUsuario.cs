@@ -18,14 +18,38 @@ namespace Capa_Presentacion
         private static string encabezadoUsuarios = "Nombre;Apellido;Email;Password;Rol";
         private List<Usuario> usuarios = new List<Usuario>();
         private List<String> roles = new List<string> { "Administrador", "Local" };
+        private bool confirmandoCierre = false;
         GestionUsuario gestor = new GestionUsuario();
 
         public FormCrearUsuario()
         {
             InitializeComponent();
+            this.FormClosing += FormCrearUsuario_FormClosing;
             usuarios = gestor.CargarUsuarios(rutaUsuarios, encabezadoUsuarios);
         }
+        private void FormCrearUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.confirmandoCierre && e.CloseReason == CloseReason.UserClosing)
+            {
+                this.confirmandoCierre = true;
 
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea salir?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    this.confirmandoCierre = false; // permite que se pregunte de nuevo en otro intento
+                }
+                else
+                {
+                    Application.Exit(); // cierra toda la app si el usuario confirma
+                }
+            }
+        }
         private void btnCrear_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
@@ -74,7 +98,9 @@ namespace Capa_Presentacion
                 {
                     var addr = new System.Net.Mail.MailAddress(email);
                     if (addr.Address != email)
+                    {
                         errores.Add("El correo electrónico no tiene un formato válido.");
+                    }
                 }
                 catch
                 {
