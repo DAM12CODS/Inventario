@@ -4,6 +4,7 @@
 
 namespace Capa_Presentacion
 {
+    using System.Numerics;
     using Capa_Entidad;
     using Datos;
     using Inventario;
@@ -22,6 +23,7 @@ namespace Capa_Presentacion
         private string encabezado = "Codigo;Nombre;Categoria;Cantidad;Precio";
         private GestionProducto archivo = new GestionProducto();
         private bool confirmandoCierre = false;
+
 
         // Constructor que recibe el formulario anterior
 
@@ -42,6 +44,7 @@ namespace Capa_Presentacion
             cmbCategorias.DataSource = categorias;
             cmbCategorias2.DataSource = categorias;
             this.FormGestionProductos_Load(this, EventArgs.Empty);
+            CargarCategoriasEnComboBox();
         }
 
         private void FormX_FormClosing(object sender, FormClosingEventArgs e)
@@ -500,5 +503,85 @@ namespace Capa_Presentacion
             };
             ventanaCategoria.Show(this);
         }
+        private void CargarCategoriasEnComboBox()
+        {
+            cmbEditarCategoria.Items.Clear();
+            cmbEditarCategoria.Items.AddRange(categorias.ToArray());
+
+            cmbEliminarCategoria.Items.Clear();
+            cmbEliminarCategoria.Items.AddRange(categorias.ToArray());
+
+        }
+
+        private void btnEditarCategoria_Click(object sender, EventArgs e)
+        {
+            string nuevaCategoria = txtEditarCategoria.Text.Trim();
+
+            if (cmbEditarCategoria.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione una categoría para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(nuevaCategoria))
+            {
+                MessageBox.Show("La categoría no puede estar vacía.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (nuevaCategoria.Any(char.IsDigit))
+            {
+                MessageBox.Show("La categoría no debe contener números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (categorias.Any(c => c.Equals(nuevaCategoria, StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show("La categoría ya existe.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string categoriaAnterior = cmbEditarCategoria.SelectedItem.ToString();
+            int indice = categorias.IndexOf(categoriaAnterior);
+
+            if (indice >= 0)
+            {
+                categorias[indice] = nuevaCategoria;
+                archivo.GuardarCategorias(categorias); // usa tu método de guardado
+                CargarCategoriasEnUI(categorias);
+                CargarCategoriasEnComboBox();
+                cmbEditarCategoria.SelectedItem = nuevaCategoria;
+                MessageBox.Show("Categoría editada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnElminarCategoria_Click(object sender, EventArgs e)
+        {
+            if (cmbEliminarCategoria.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione una categoría para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirm = MessageBox.Show("¿Está seguro de eliminar esta categoría?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                string categoriaEliminar = cmbEliminarCategoria.SelectedItem.ToString();
+                categorias.Remove(categoriaEliminar);
+                archivo.GuardarCategorias(categorias);
+                CargarCategoriasEnUI(categorias);
+                CargarCategoriasEnComboBox();
+                txtEditarCategoria.Clear();
+                MessageBox.Show("Categoría eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void cmbEditarCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEditarCategoria.SelectedItem != null)
+            {
+                txtEditarCategoria.Text = cmbEditarCategoria.SelectedItem.ToString();
+            }
+        }
+
     }
 }

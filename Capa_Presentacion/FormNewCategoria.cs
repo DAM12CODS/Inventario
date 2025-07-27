@@ -56,7 +56,7 @@ namespace Capa_Presentacion
 
             // 4. Agregar y guardar si pasa las validaciones
             categorias.Add(categoria);
-            gestor.RegistrarCategorias(categorias, categoria);
+            gestor.RegistrarCategoria(categoria);
             CategoriasActualizadas?.Invoke(categorias); // notifica al form anterior
             txtNewCategoria.Clear();
 

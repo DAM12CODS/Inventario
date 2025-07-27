@@ -192,21 +192,38 @@ namespace Datos
             }
             return categorias;
         }
-        public void RegistrarCategorias(List<string> categorias, string categoria, string ruta = "categorias.csv")
+        public void RegistrarCategoria(string categoria, string ruta = "categorias.csv", string encabezado = "Categorias")
         {
-            categorias = CargarCategorias();
+            List<string> categorias = CargarCategorias(ruta, encabezado);
+            if (categorias.Any(c => c.Equals(categoria, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new Exception("La categoría ya existe.");
+            }
+
+            using (StreamWriter sw = new StreamWriter(ruta, true)) // true => agrega al final
+            {
+                sw.WriteLine(categoria);
+            }
+        }
+
+        public void GuardarCategorias(List<string> categorias, string ruta = "categorias.csv", string encabezado = "Categorias")
+        {
             try
             {
-                using (StreamWriter datos = File.AppendText(ruta))
+                using (StreamWriter sw = new StreamWriter(ruta, false)) // false => sobrescribe
                 {
-                    categorias.Add(categoria);
-                    datos.WriteLine($"{categoria}");
+                    sw.WriteLine(encabezado);
+                    foreach (var categoria in categorias)
+                    {
+                        sw.WriteLine(categoria);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al leer el archivo" + ex.Message);
+                throw new Exception("Error al guardar categorías: " + ex.Message);
             }
         }
+
     }
 }

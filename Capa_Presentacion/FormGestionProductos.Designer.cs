@@ -54,7 +54,6 @@
             groupBox2 = new GroupBox();
             tabPage2 = new TabPage();
             groupBox3 = new GroupBox();
-            btnAgregarCategoria = new Button();
             cmbCategorias2 = new ComboBox();
             txtCantidadEditar = new TextBox();
             label11 = new Label();
@@ -69,6 +68,16 @@
             tabPage3 = new TabPage();
             groupBox1 = new GroupBox();
             pictureBox6 = new PictureBox();
+            tabPage4 = new TabPage();
+            groupBox6 = new GroupBox();
+            btnAgregarCategoria = new Button();
+            groupBox5 = new GroupBox();
+            cmbEliminarCategoria = new ComboBox();
+            btnElminarCategoria = new Button();
+            groupBox4 = new GroupBox();
+            btnEditarCategoria = new Button();
+            txtEditarCategoria = new TextBox();
+            cmbEditarCategoria = new ComboBox();
             btnAddCategoria = new Button();
             toolTipAyuda = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -82,6 +91,10 @@
             tabPage3.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            tabPage4.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // btnVolver
@@ -215,13 +228,15 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = Color.Brown;
             btnEliminar.Font = new Font("Rockwell", 12F);
+            btnEliminar.ForeColor = Color.White;
             btnEliminar.Location = new Point(277, 64);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(163, 44);
             btnEliminar.TabIndex = 26;
             btnEliminar.Text = "Eliminar Producto";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += BtnEliminar_Click;
             // 
             // dataGridView1
@@ -278,6 +293,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(9, 97);
             tabControl1.Name = "tabControl1";
@@ -331,7 +347,6 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnAgregarCategoria);
             groupBox3.Controls.Add(cmbCategorias2);
             groupBox3.Controls.Add(txtCantidadEditar);
             groupBox3.Controls.Add(label11);
@@ -351,16 +366,6 @@
             groupBox3.TabIndex = 33;
             groupBox3.TabStop = false;
             groupBox3.Text = "Editar Producto: ";
-            // 
-            // btnAgregarCategoria
-            // 
-            btnAgregarCategoria.Location = new Point(31, 183);
-            btnAgregarCategoria.Name = "btnAgregarCategoria";
-            btnAgregarCategoria.Size = new Size(117, 50);
-            btnAgregarCategoria.TabIndex = 33;
-            btnAgregarCategoria.Text = "Agregar Categoria";
-            btnAgregarCategoria.UseVisualStyleBackColor = true;
-            btnAgregarCategoria.Click += btnAgregarCategoria_Click;
             // 
             // cmbCategorias2
             // 
@@ -507,6 +512,124 @@
             pictureBox6.TabStop = false;
             pictureBox6.Click += pictureBox6_Click;
             // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(groupBox6);
+            tabPage4.Controls.Add(groupBox5);
+            tabPage4.Controls.Add(groupBox4);
+            tabPage4.Location = new Point(4, 28);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(528, 333);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Categorías Producto";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(btnAgregarCategoria);
+            groupBox6.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox6.ForeColor = Color.FromArgb(64, 64, 64);
+            groupBox6.Location = new Point(15, 235);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(181, 83);
+            groupBox6.TabIndex = 40;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Agregar Categoría: ";
+            // 
+            // btnAgregarCategoria
+            // 
+            btnAgregarCategoria.BackColor = Color.LightSeaGreen;
+            btnAgregarCategoria.ForeColor = Color.White;
+            btnAgregarCategoria.Location = new Point(35, 25);
+            btnAgregarCategoria.Name = "btnAgregarCategoria";
+            btnAgregarCategoria.Size = new Size(117, 50);
+            btnAgregarCategoria.TabIndex = 33;
+            btnAgregarCategoria.Text = "Agregar Categoría";
+            btnAgregarCategoria.UseVisualStyleBackColor = false;
+            btnAgregarCategoria.Click += btnAgregarCategoria_Click;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(cmbEliminarCategoria);
+            groupBox5.Controls.Add(btnElminarCategoria);
+            groupBox5.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox5.ForeColor = Color.FromArgb(64, 64, 64);
+            groupBox5.Location = new Point(15, 129);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(496, 100);
+            groupBox5.TabIndex = 39;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Elminar Categoría:";
+            // 
+            // cmbEliminarCategoria
+            // 
+            cmbEliminarCategoria.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbEliminarCategoria.FormattingEnabled = true;
+            cmbEliminarCategoria.Location = new Point(22, 37);
+            cmbEliminarCategoria.Name = "cmbEliminarCategoria";
+            cmbEliminarCategoria.Size = new Size(121, 27);
+            cmbEliminarCategoria.TabIndex = 36;
+            // 
+            // btnElminarCategoria
+            // 
+            btnElminarCategoria.BackColor = Color.Brown;
+            btnElminarCategoria.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnElminarCategoria.ForeColor = Color.Transparent;
+            btnElminarCategoria.Location = new Point(351, 25);
+            btnElminarCategoria.Name = "btnElminarCategoria";
+            btnElminarCategoria.Size = new Size(117, 49);
+            btnElminarCategoria.TabIndex = 35;
+            btnElminarCategoria.Text = "Eliminar Categoría";
+            btnElminarCategoria.UseVisualStyleBackColor = false;
+            btnElminarCategoria.Click += btnElminarCategoria_Click;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(btnEditarCategoria);
+            groupBox4.Controls.Add(txtEditarCategoria);
+            groupBox4.Controls.Add(cmbEditarCategoria);
+            groupBox4.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            groupBox4.ForeColor = Color.FromArgb(64, 64, 64);
+            groupBox4.Location = new Point(15, 23);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(496, 100);
+            groupBox4.TabIndex = 38;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Editar Cateogría:";
+            // 
+            // btnEditarCategoria
+            // 
+            btnEditarCategoria.BackColor = Color.LightSeaGreen;
+            btnEditarCategoria.Font = new Font("Rockwell", 12F);
+            btnEditarCategoria.ForeColor = Color.Transparent;
+            btnEditarCategoria.Location = new Point(351, 25);
+            btnEditarCategoria.Name = "btnEditarCategoria";
+            btnEditarCategoria.Size = new Size(117, 49);
+            btnEditarCategoria.TabIndex = 34;
+            btnEditarCategoria.Text = "Aceptar Cambios";
+            btnEditarCategoria.UseVisualStyleBackColor = false;
+            btnEditarCategoria.Click += btnEditarCategoria_Click;
+            // 
+            // txtEditarCategoria
+            // 
+            txtEditarCategoria.Font = new Font("Rockwell", 12F);
+            txtEditarCategoria.ForeColor = SystemColors.WindowText;
+            txtEditarCategoria.Location = new Point(187, 38);
+            txtEditarCategoria.Name = "txtEditarCategoria";
+            txtEditarCategoria.Size = new Size(137, 26);
+            txtEditarCategoria.TabIndex = 37;
+            // 
+            // cmbEditarCategoria
+            // 
+            cmbEditarCategoria.Font = new Font("Rockwell", 12F);
+            cmbEditarCategoria.ForeColor = SystemColors.WindowText;
+            cmbEditarCategoria.FormattingEnabled = true;
+            cmbEditarCategoria.Location = new Point(35, 37);
+            cmbEditarCategoria.Name = "cmbEditarCategoria";
+            cmbEditarCategoria.Size = new Size(121, 27);
+            cmbEditarCategoria.TabIndex = 36;
+            cmbEditarCategoria.SelectedIndexChanged += cmbEditarCategoria_SelectedIndexChanged;
+            // 
             // btnAddCategoria
             // 
             btnAddCategoria.Location = new Point(196, 157);
@@ -546,6 +669,11 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            tabPage4.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -593,5 +721,14 @@
         private Button btnAddCategoria;
         private Button btnAgregarCategoria;
         private ToolTip toolTipAyuda;
+        private TabPage tabPage4;
+        private GroupBox groupBox4;
+        private Button btnEditarCategoria;
+        private TextBox txtEditarCategoria;
+        private ComboBox cmbEditarCategoria;
+        private Button btnElminarCategoria;
+        private GroupBox groupBox5;
+        private ComboBox cmbEliminarCategoria;
+        private GroupBox groupBox6;
     }
 }
