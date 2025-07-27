@@ -133,7 +133,7 @@
             // 
             button1.BackColor = Color.LightSeaGreen;
             button1.Font = new Font("Rockwell", 9.75F);
-            button1.Location = new Point(560, 432);
+            button1.Location = new Point(295, 479);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(151, 34);
@@ -146,7 +146,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Rockwell", 9.75F);
-            label3.Location = new Point(507, 406);
+            label3.Location = new Point(256, 453);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(230, 16);
@@ -158,7 +158,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(748, 477);
+            ClientSize = new Size(748, 524);
             Controls.Add(label3);
             Controls.Add(button1);
             Controls.Add(btnSalir);
@@ -172,6 +172,7 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

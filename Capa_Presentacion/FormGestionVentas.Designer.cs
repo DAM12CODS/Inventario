@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionVentas));
             btnVolver = new Button();
             label2 = new Label();
@@ -45,10 +45,6 @@
             btnEliminarVenta = new Button();
             btnGenerarReporte = new Button();
             dataGridView1 = new DataGridView();
-            Nombre = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Categoria = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             label8 = new Label();
             label10 = new Label();
@@ -77,6 +73,10 @@
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -107,7 +107,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Rockwell", 12F);
-            label2.Location = new Point(19, 43);
+            label2.Location = new Point(19, 47);
             label2.Name = "label2";
             label2.Size = new Size(84, 19);
             label2.TabIndex = 2;
@@ -117,7 +117,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Rockwell", 12F);
-            label3.Location = new Point(19, 70);
+            label3.Location = new Point(19, 87);
             label3.Name = "label3";
             label3.Size = new Size(86, 19);
             label3.TabIndex = 3;
@@ -127,7 +127,7 @@
             // 
             cmbProductosVenta.Font = new Font("Rockwell", 12F);
             cmbProductosVenta.FormattingEnabled = true;
-            cmbProductosVenta.Location = new Point(109, 39);
+            cmbProductosVenta.Location = new Point(109, 43);
             cmbProductosVenta.Name = "cmbProductosVenta";
             cmbProductosVenta.Size = new Size(121, 27);
             cmbProductosVenta.TabIndex = 4;
@@ -136,7 +136,7 @@
             // txtCantidadProducto
             // 
             txtCantidadProducto.Font = new Font("Rockwell", 12F);
-            txtCantidadProducto.Location = new Point(109, 68);
+            txtCantidadProducto.Location = new Point(109, 85);
             txtCantidadProducto.Name = "txtCantidadProducto";
             txtCantidadProducto.Size = new Size(121, 26);
             txtCantidadProducto.TabIndex = 5;
@@ -146,11 +146,11 @@
             btnAgregarProducto.BackColor = Color.CadetBlue;
             btnAgregarProducto.Font = new Font("Rockwell", 12F);
             btnAgregarProducto.ForeColor = Color.White;
-            btnAgregarProducto.Location = new Point(36, 103);
+            btnAgregarProducto.Location = new Point(278, 48);
             btnAgregarProducto.Name = "btnAgregarProducto";
-            btnAgregarProducto.Size = new Size(169, 37);
+            btnAgregarProducto.Size = new Size(177, 46);
             btnAgregarProducto.TabIndex = 6;
-            btnAgregarProducto.Text = "Agregar Producto";
+            btnAgregarProducto.Text = "Agregar producto/s a cola";
             btnAgregarProducto.UseVisualStyleBackColor = false;
             btnAgregarProducto.Click += BtnAgregarProducto_Click;
             // 
@@ -159,11 +159,11 @@
             btnRegistrarVenta.BackColor = Color.LightSeaGreen;
             btnRegistrarVenta.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnRegistrarVenta.ForeColor = Color.FromArgb(64, 64, 64);
-            btnRegistrarVenta.Location = new Point(314, 43);
+            btnRegistrarVenta.Location = new Point(768, 186);
             btnRegistrarVenta.Name = "btnRegistrarVenta";
-            btnRegistrarVenta.Size = new Size(127, 50);
+            btnRegistrarVenta.Size = new Size(192, 50);
             btnRegistrarVenta.TabIndex = 7;
-            btnRegistrarVenta.Text = "Registrar Venta";
+            btnRegistrarVenta.Text = "Finalizar Venta";
             btnRegistrarVenta.UseVisualStyleBackColor = false;
             btnRegistrarVenta.Click += BtnRegistrarVenta_Click;
             // 
@@ -251,39 +251,20 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nombre, Codigo, Categoria, PrecioUnitario });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Onyx", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.Location = new Point(530, 31);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(442, 135);
             dataGridView1.TabIndex = 16;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            // 
-            // Categoria
-            // 
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.Name = "PrecioUnitario";
             // 
             // pictureBox1
             // 
@@ -301,9 +282,9 @@
             label8.ForeColor = SystemColors.WindowFrame;
             label8.Location = new Point(557, 7);
             label8.Name = "label8";
-            label8.Size = new Size(241, 20);
+            label8.Size = new Size(239, 20);
             label8.TabIndex = 19;
-            label8.Text = "Productos Agregados a Venta: ";
+            label8.Text = "Productos agregados en cola: ";
             label8.Click += Label8_Click;
             // 
             // label10
@@ -316,7 +297,7 @@
             label10.Name = "label10";
             label10.Size = new Size(159, 27);
             label10.TabIndex = 30;
-            label10.Text = "Gestion Venta";
+            label10.Text = "Gestión Venta";
             // 
             // pictureBox2
             // 
@@ -335,7 +316,6 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(cmbProductosVenta);
             groupBox1.Controls.Add(btnAgregarProducto);
-            groupBox1.Controls.Add(btnRegistrarVenta);
             groupBox1.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = Color.FromArgb(64, 64, 64);
             groupBox1.Location = new Point(10, 20);
@@ -363,6 +343,7 @@
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(label8);
+            tabPage1.Controls.Add(btnRegistrarVenta);
             tabPage1.Font = new Font("Rockwell", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabPage1.Location = new Point(4, 23);
             tabPage1.Name = "tabPage1";
@@ -391,7 +372,7 @@
             groupBox2.Size = new Size(488, 192);
             groupBox2.TabIndex = 33;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Informacion del Producto";
+            groupBox2.Text = "Información del Producto";
             // 
             // label15
             // 
@@ -417,11 +398,11 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Rockwell", 12F);
-            label13.Location = new Point(10, 100);
+            label13.Location = new Point(8, 98);
             label13.Name = "label13";
             label13.Size = new Size(158, 19);
             label13.TabIndex = 7;
-            label13.Text = "Categoria Producto:";
+            label13.Text = "Categoría Producto:";
             // 
             // label12
             // 
@@ -441,7 +422,7 @@
             label11.Name = "label11";
             label11.Size = new Size(138, 19);
             label11.TabIndex = 5;
-            label11.Text = "Codigo Producto:";
+            label11.Text = "Código Producto:";
             // 
             // lblStockDisponible
             // 
@@ -579,6 +560,30 @@
             dataGridViewTextBoxColumn5.HeaderText = "Precio Total";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Código";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.HeaderText = "Categoría";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            // 
             // FormGestionVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -593,6 +598,7 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormGestionVentas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestion Ventas";
             Load += FormGestionVentas_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -633,10 +639,6 @@
         private Button btnEliminarVenta;
         private Button btnGenerarReporte;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Categoria;
-        private DataGridViewTextBoxColumn PrecioUnitario;
         private PictureBox pictureBox1;
         private Label label8;
         private Label label10;
@@ -665,5 +667,9 @@
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private Label label5;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn PrecioUnitario;
     }
 }

@@ -138,6 +138,7 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEstadoInventario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Estado Inventario";
             Load += FormEstadoInventario_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

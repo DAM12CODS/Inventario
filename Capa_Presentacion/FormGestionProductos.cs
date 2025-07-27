@@ -16,11 +16,7 @@ namespace Capa_Presentacion
     {
 
         private List<Producto> productos = new List<Producto>();
-        private List<string> categorias = new List<string>
-        {
-            "Frutas y verduras","Carnes y embutidos", "Bebidas",
-            "Cereales y productos secos", "Detergentes y jabones","Desinfectantes","Champús y acondicionadores","Desodorantes","Utilies Escolares",
-        };
+        private List<string> categorias = new List<string>();
 
         private string productosCSV = "productos.csv";
         private string encabezado = "Codigo;Nombre;Categoria;Cantidad;Precio";
@@ -37,8 +33,7 @@ namespace Capa_Presentacion
         {
             this.InitializeComponent();
             this.FormClosing += FormX_FormClosing; // reemplaza "X" por el nombre del formulario
-            var gestor = new GestionProducto();
-            gestor.CargarProductos(this.productosCSV, this.encabezado, this.productos);
+            archivo.CargarProductos(productosCSV, encabezado, productos);
             this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = this.productos;
 
@@ -102,6 +97,7 @@ namespace Capa_Presentacion
         {
             // Cargar productos desde archivo si es necesario
             this.archivo.CargarProductos(this.productosCSV, this.encabezado, this.productos);
+            categorias = archivo.CargarCategorias();
 
             // Llenar ComboBox de editar
             this.cmbEditar.DataSource = null;
@@ -118,6 +114,7 @@ namespace Capa_Presentacion
             // Mostrar productos en el DataGrid
             this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = this.productos;
+            CargarCategoriasEnUI(categorias);
         }
 
         private void BtnRegistrar_Click(object sender, EventArgs e)
@@ -254,28 +251,103 @@ namespace Capa_Presentacion
                 return;
             }
 
-            // Recolección y validación básica de datos
+            // Recolección de datos
             string codigoP = ((string)this.cmbEditar.SelectedValue).Trim();
             string nombreP = this.txtNombreEditar.Text.Trim();
             string categoriaP = cmbCategorias2.SelectedValue?.ToString().Trim();
+            string cantidadText = this.txtCantidadEditar.Text.Trim();
+            string precioText = this.txtPrecioEditar.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(codigoP) ||
-                string.IsNullOrWhiteSpace(nombreP) ||
-                string.IsNullOrWhiteSpace(categoriaP))
+            List<string> errores = new List<string>();
+            bool hayCampoVacio = false;
+
+            // Validar nombre
+            // Validar nombre
+            if (string.IsNullOrWhiteSpace(nombreP))
             {
-                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                hayCampoVacio = true;
+            }
+            else
+            {
+                if (!nombreP.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+                {
+                    errores.Add("El nombre del producto solo debe contener letras.");
+                }
+
+                // Validar duplicado de nombre
+                if (this.productos.Any(p =>
+                    p.NombreProducto.Equals(nombreP, StringComparison.OrdinalIgnoreCase) &&
+                    !p.CodigoProducto.Equals(codigoP, StringComparison.OrdinalIgnoreCase)))
+                {
+                    errores.Add("Ya existe otro producto con ese nombre.");
+                }
+            }
+
+            // Verificar si ya existe otro producto con el mismo nombre (excepto el que se está editando)
+            if (this.productos.Any(p =>
+                p.NombreProducto.Equals(nombreP, StringComparison.OrdinalIgnoreCase) &&
+                !p.CodigoProducto.Equals(codigoP, StringComparison.OrdinalIgnoreCase)))
+            {
+                errores.Add("Ya existe otro producto con ese nombre.");
+            }
+
+            // Validar categoría
+            if (string.IsNullOrWhiteSpace(categoriaP))
+            {
+                hayCampoVacio = true;
+            }
+            else
+            {
+                if (!categoriaP.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+                {
+                    errores.Add("La categoría solo debe contener letras.");
+                }
+            }
+
+            // Validar cantidad
+            int cantidadP = 0;
+            if (string.IsNullOrWhiteSpace(cantidadText))
+            {
+                hayCampoVacio = true;
+            }
+            else
+            {
+                if (!int.TryParse(cantidadText, out cantidadP))
+                {
+                    errores.Add("La cantidad debe ser un número entero válido.");
+                }
+            }
+
+            // Validar precio
+            double precioP = 0;
+            if (string.IsNullOrWhiteSpace(precioText))
+            {
+                hayCampoVacio = true;
+            }
+            else
+            {
+                if (!double.TryParse(precioText, out precioP))
+                {
+                    errores.Add("El precio debe ser un número válido.");
+                }
+            }
+
+            // Mostrar errores
+            foreach (string error in errores)
+            {
+                MessageBox.Show(error, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Si hubo errores, no continuar
+            if (errores.Count > 0)
+            {
                 return;
             }
 
-            if (!int.TryParse(this.txtCantidadEditar.Text.Trim(), out int cantidadP))
+            // Si no hay errores pero sí campos vacíos
+            if (hayCampoVacio)
             {
-                MessageBox.Show("La cantidad debe ser un número entero válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!double.TryParse(this.txtPrecioEditar.Text.Trim(), out double precioP))
-            {
-                MessageBox.Show("El precio debe ser un número válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, complete todos los campos.", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -409,6 +481,24 @@ namespace Capa_Presentacion
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             BtnEliminar_Click(sender, e);
+        }
+
+        private void CargarCategoriasEnUI(List<string> categorias)
+        {
+            cmbCategorias.DataSource = null;              // Limpia la lista actual
+            cmbCategorias.DataSource = categorias;        // Asigna la nueva
+            cmbCategorias2.DataSource = categorias;
+        }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            FormNewCategoria ventanaCategoria = new FormNewCategoria(this);
+            ventanaCategoria.CategoriasActualizadas += cats =>
+            {
+                categorias = cats;
+                CargarCategoriasEnUI(categorias);
+            };
+            ventanaCategoria.Show(this);
         }
     }
 }

@@ -119,7 +119,8 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMenuPrincipal";
-            Text = "Menu Principal";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Menú Principal";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

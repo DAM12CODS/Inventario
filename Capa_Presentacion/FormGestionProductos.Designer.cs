@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionProductos));
             btnVolver = new Button();
             label2 = new Label();
@@ -53,6 +54,7 @@
             groupBox2 = new GroupBox();
             tabPage2 = new TabPage();
             groupBox3 = new GroupBox();
+            btnAgregarCategoria = new Button();
             cmbCategorias2 = new ComboBox();
             txtCantidadEditar = new TextBox();
             label11 = new Label();
@@ -67,6 +69,8 @@
             tabPage3 = new TabPage();
             groupBox1 = new GroupBox();
             pictureBox6 = new PictureBox();
+            btnAddCategoria = new Button();
+            toolTipAyuda = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -159,6 +163,7 @@
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(100, 26);
             txtCodigo.TabIndex = 5;
+            toolTipAyuda.SetToolTip(txtCodigo, "El producto a ingresar debe contener 6 caracteres exactamente");
             txtCodigo.TextChanged += txtCodigo_TextChanged_1;
             // 
             // txtCantidad
@@ -181,7 +186,7 @@
             // 
             btnRegistrar.BackColor = Color.LightSeaGreen;
             btnRegistrar.Font = new Font("Rockwell", 12F);
-            btnRegistrar.Location = new Point(309, 122);
+            btnRegistrar.Location = new Point(310, 109);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(127, 52);
             btnRegistrar.TabIndex = 9;
@@ -248,7 +253,7 @@
             label9.Name = "label9";
             label9.Size = new Size(196, 27);
             label9.TabIndex = 29;
-            label9.Text = "Gestion Producto";
+            label9.Text = "Gestión Producto";
             // 
             // pictureBox2
             // 
@@ -326,6 +331,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnAgregarCategoria);
             groupBox3.Controls.Add(cmbCategorias2);
             groupBox3.Controls.Add(txtCantidadEditar);
             groupBox3.Controls.Add(label11);
@@ -345,6 +351,16 @@
             groupBox3.TabIndex = 33;
             groupBox3.TabStop = false;
             groupBox3.Text = "Editar Producto: ";
+            // 
+            // btnAgregarCategoria
+            // 
+            btnAgregarCategoria.Location = new Point(31, 183);
+            btnAgregarCategoria.Name = "btnAgregarCategoria";
+            btnAgregarCategoria.Size = new Size(117, 50);
+            btnAgregarCategoria.TabIndex = 33;
+            btnAgregarCategoria.Text = "Agregar Categoria";
+            btnAgregarCategoria.UseVisualStyleBackColor = true;
+            btnAgregarCategoria.Click += btnAgregarCategoria_Click;
             // 
             // cmbCategorias2
             // 
@@ -491,6 +507,15 @@
             pictureBox6.TabStop = false;
             pictureBox6.Click += pictureBox6_Click;
             // 
+            // btnAddCategoria
+            // 
+            btnAddCategoria.Location = new Point(196, 157);
+            btnAddCategoria.Name = "btnAddCategoria";
+            btnAddCategoria.Size = new Size(25, 22);
+            btnAddCategoria.TabIndex = 33;
+            btnAddCategoria.Text = "+";
+            btnAddCategoria.UseVisualStyleBackColor = true;
+            // 
             // FormGestionProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -503,6 +528,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormGestionProductos";
             Text = "Gestion Productos";
             Load += FormGestionProductos_Load_1;
@@ -564,5 +590,8 @@
         private Label label11;
         private Label label13;
         private Label label12;
+        private Button btnAddCategoria;
+        private Button btnAgregarCategoria;
+        private ToolTip toolTipAyuda;
     }
 }

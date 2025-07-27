@@ -3,9 +3,11 @@
 // </copyright>
 
 namespace Datos
-{
-    using System;
+{  
+    
     using Inventario;
+    using System;
+    using System.Security.Cryptography;
 
     /// <summary>
     /// Con esta parte verifivo la existencia del archivo.

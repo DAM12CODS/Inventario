@@ -48,6 +48,6 @@ namespace Capa_Entidad
         public double PrecioUnitario => this.Producto.PrecioProducto;
 
         /// <summary>Gets subtotal calculado (cantidad * precio).</summary>
-        public double Subtotal => this.Cantidad * this.PrecioUnitario;
+        public double Subtotal => Cantidad * PrecioUnitario;
     }
 }

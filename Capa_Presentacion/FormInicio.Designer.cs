@@ -81,6 +81,7 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormInicio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "¡Bienvenido!";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

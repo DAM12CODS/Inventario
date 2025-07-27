@@ -123,7 +123,7 @@
             label1.Name = "label1";
             label1.Size = new Size(242, 27);
             label1.TabIndex = 7;
-            label1.Text = "Creacion de usuario: ";
+            label1.Text = "Creación de usuario: ";
             // 
             // label2
             // 
@@ -207,6 +207,7 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormCrearUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Crear Usuario ";
             Load += FormCrearUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
